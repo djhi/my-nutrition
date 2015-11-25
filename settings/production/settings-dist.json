@@ -1,0 +1,12 @@
+{
+  "applicationName": "Ma nutrition",
+  "applicationEmail": "Ma nutrition <no-reply@mail.coaching-nutrition.fr>",
+  "applicationSignUpUrl": "http://coaching-nutrition.fr/sign-up",
+  "public": {
+    "env": "production"
+  },
+  "google": {
+    "clientId": "",
+    "secret": ""
+  }
+}

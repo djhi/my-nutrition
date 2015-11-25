@@ -1,0 +1,40 @@
+.dish {
+  cursor: pointer;
+  margin-bottom: .5em;
+
+  &:hover {
+    background-color: $card-cap-bg;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-top: 0;
+  }
+}
+
+.meals {
+  white-space: nowrap;
+}
+
+.meal,
+.meal-action {
+  display: inline-block;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  vertical-align: top;
+  white-space: normal;
+  width: 300px;
+}
+
+.meal {
+  .btn-link {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.dish-drop-target .panel-body {
+  background-color: $card-cap-bg;
+}

@@ -1,0 +1,11 @@
+{
+  "applicationName": "Ma nutrition",
+  "applicationEmail": "Ma nutrition <no-reply@mail.coaching-nutrition.fr>",    
+  "public": {
+    "env": "development"
+  },
+  "google": {
+    "clientId": "",
+    "secret": ""
+  }
+}

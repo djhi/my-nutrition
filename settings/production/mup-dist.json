@@ -1,0 +1,30 @@
+{
+  "servers": [
+    {
+      "host": "",
+      "username": ""
+    }
+  ],
+
+  "setupMongo": true,
+  "setupNode": true,
+  "nodeVersion": "0.10.40",
+
+  "setupPhantom": true,
+
+  "enableUploadProgressBar": true,
+
+  "appName": "my-nutrition",
+
+  "app": "../../meteor_core/",
+
+  "env": {
+    "MAIL_URL": "",
+    "METEOR_ENV": "production",
+    "PORT": 3000,
+    "ROOT_URL": "http://www.coaching-nutrition.fr",
+    "UPSTART_UID" : "meteoruser"
+  },
+
+  "deployCheckWaitTime": 15
+}
