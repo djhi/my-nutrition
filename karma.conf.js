@@ -4,7 +4,7 @@ var webpackConfig = require('./webpack/webpack.config.client.test.js');
 module.exports = function karmaConf(config) {
   var cfg = {
     reporters: ['mocha', 'coverage'],
-    browsers: ['Chrome', 'ChromeCanary'],
+    browsers: ['Chrome'],
 
     customLaunchers: {
       Chrome_travis_ci: {
@@ -43,6 +43,7 @@ module.exports = function karmaConf(config) {
 
   if (process.env.TRAVIS) {
     cfg.browsers = ['Chrome_travis_ci'];
+    cfg.singleRun = true;
   }
 
   config.set(cfg);

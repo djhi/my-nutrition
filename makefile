@@ -33,7 +33,4 @@ restart-prod:
 	cd ./settings/production && mup restart
 
 test:
-	NODE_ENV=test ./node_modules/karma/bin/karma start && ./node_modules/karma/bin/karma-run
-
-test-ci:
-	NODE_ENV=test ./node_modules/karma/bin/karma start && ./node_modules/karma/bin/karma-run --single-run
+	NODE_ENV=test ./node_modules/karma/bin/karma start

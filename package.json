@@ -87,7 +87,7 @@
   "scripts": {
     "install": "napa",
     "lint": "eslint app",
-    "test": "make --silent test-ci"
+    "test": "make --silent test"
   },
   "napa": {
     "bootstrap": "twbs/bootstrap#48fc3d9"
