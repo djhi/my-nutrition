@@ -4,8 +4,13 @@ node_js:
 cache:
     directories:
         - node_modules
+before_install:
+  - "export CHROME_BIN=chromium-browser"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
 install:
-    - "make --silent install"
+  - "make --silent install"
 branches:
     only:
         - master
