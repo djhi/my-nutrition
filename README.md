@@ -1,4 +1,5 @@
 # My-Nutrition
+[![Build Status](https://travis-ci.org/djhi/my-nutrition.svg?branch=master)](https://travis-ci.org/djhi/my-nutrition)
 
 A Meteor application using Webpack, React and Redux for nutritionists who coach people.
 
