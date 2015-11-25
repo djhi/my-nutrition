@@ -86,7 +86,8 @@
   },
   "scripts": {
     "install": "napa",
-    "lint": "eslint app"
+    "lint": "eslint app",
+    "test": "make --silent test"
   },
   "napa": {
     "bootstrap": "twbs/bootstrap#48fc3d9"
