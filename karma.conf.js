@@ -2,10 +2,16 @@
 var webpackConfig = require('./webpack/webpack.config.client.test.js');
 
 module.exports = function karmaConf(config) {
-  config.set({
-    // singleRun: true,
+  var cfg = {
     reporters: ['mocha', 'coverage'],
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'ChromeCanary'],
+
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox'],
+      },
+    },
     files: ['./test/karma.bundle.js'],
     frameworks: ['mocha', 'sinon-chai'],
     plugins: [
@@ -33,5 +39,11 @@ module.exports = function karmaConf(config) {
       subdir: '.',
       file: 'lcov.info',
     },
-  });
+  };
+
+  if (process.env.TRAVIS) {
+    cfg.browsers = ['Chrome_travis_ci'];
+  }
+
+  config.set(cfg);
 };
