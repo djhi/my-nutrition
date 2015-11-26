@@ -1,7 +1,9 @@
 # My-Nutrition
 [![Build Status](https://travis-ci.org/djhi/my-nutrition.svg?branch=master)](https://travis-ci.org/djhi/my-nutrition)
 
-A Meteor application using Webpack, React and Redux for nutritionists who coach people.
+A Meteor application using Webpack, React and Redux for nutritionists who coach people and people wanting to keep track of their nutrition.
+
+![Nutritional Planning](https://sc-cdn.scaleengine.net/i/b3f07b4aa745e90ed8301d465e8b5b00.png)
 
 ## Installation
 
