@@ -6,10 +6,6 @@ var path = require('path');
 
 module.exports = lodash.assign(lodash.clone(config), {
   devtool: 'inline-source-map',
-  entry: [
-    './lib/core-js-no-number',
-    'regenerator/runtime',
-  ],
   module: {
     loaders: (config.module.loaders || []).concat([{
       test: /\.jsx?$/,

@@ -5,7 +5,6 @@ import auth from './auth';
 import coachees from './coachees';
 import meals from './meals';
 import mealTemplates from './mealTemplates';
-import mealTypeDefaults from './mealTypeDefaults';
 import notification from './notification';
 
 const rootReducer = combineReducers({
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
   coachees,
   meals,
   mealTemplates,
-  mealTypeDefaults,
   notification,
   router,
 });

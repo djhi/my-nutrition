@@ -5,7 +5,7 @@ import isOwner from './common/isOwner';
 import takenAt from './meals/takenAt';
 import addUserOnInsert from './common/addUserOnInsert';
 import { DishReferenceSchema } from './dishes';
-import { MealTypes } from './mealTypes';
+import { MealTypes } from './mealTemplates';
 
 export const MealSchema = new SimpleSchema({
   name: {

@@ -4,6 +4,7 @@ import {Form, ValidatedInput} from 'react-bootstrap-validation';
 
 const NewMealTemplateModal = ({
     children,
+    defaultValue,
     confirmButtonLabel,
     cancelButtonLabel,
     onCancel,
@@ -14,16 +15,15 @@ const NewMealTemplateModal = ({
   <Modal onHide={onCancel} show={show}>
       <Form
         className=""
-        onValidSubmit={({name}) => onConfirm(name)}
+        model={{value: defaultValue}}
+        onValidSubmit={({value}) => onConfirm(value)}
       >
         <Modal.Body>
-            <p>
-              {children}
-            </p>
+            {children}
             <ValidatedInput
               type="text"
-              placeholder={`${placeholder}`}
-              name="name"
+              placeholder={placeholder}
+              name="value"
               validate="required"
               errorHelp={{
                 required: 'Requis',
@@ -45,7 +45,8 @@ const NewMealTemplateModal = ({
 
 NewMealTemplateModal.propTypes = {
   children: PropTypes.node.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
+  placeholder: PropTypes.string,
   confirmButtonLabel: PropTypes.string,
   cancelButtonLabel: PropTypes.string,
   onConfirm: PropTypes.func.isRequired,

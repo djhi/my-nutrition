@@ -1,15 +1,15 @@
 /* global Accounts */
 import { assign, omit } from 'lodash';
 
-export default function(mealTypeDefaultCollection, inviteCollection, determineEmail, setUserCoach) {
+export default function(mealTemplatesCollection, inviteCollection, determineEmail, setUserCoach) {
   Accounts.onCreateUser((options, user) => {
     const invitation = inviteCollection.findOne({
       email: determineEmail(user),
     });
 
-    const mealTypeDefaults = mealTypeDefaultCollection.find({ userId: { $exists: false } });
+    const mealTemplates = mealTemplatesCollection.find({ userId: { $exists: false } });
 
-    mealTypeDefaults.forEach(mealTypeDefault => mealTypeDefaultCollection.insert(assign({}, omit(mealTypeDefault, '_id'), { userId: user._id })));
+    mealTemplates.forEach(mealTemplate => mealTemplatesCollection.insert(assign({}, omit(mealTemplate, '_id'), { userId: user._id })));
 
     // We still want the default hook's 'profile' behavior.
     if (options.profile) {

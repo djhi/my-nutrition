@@ -57,12 +57,13 @@ export default class MealMenu extends Component {
           <button className="dropdown-item text-danger" onClick={this.onDelete.bind(this)}>Supprimer</button>
         </div>
         <PromptModal
-          placeholder={meal.name}
+          defaultValue={meal.name}
           onCancel={this.onCancel.bind(this)}
-          onConfirm={this.onNewMealTemplate.bind(this)}
+          onConfirm={this.onSaveNewMealTemplate.bind(this)}
           show={setTemplateName}
         >
           Entrez le nom de ce nouveau modèle de repas
+          <p className="text-muted"><small>Si ce nom existe déjà, le modèle correspondant sera remplacé.</small></p>
         </PromptModal>
 
         <ConfirmModal

@@ -8,7 +8,16 @@ export function loadMealTemplatesFactory(collection) {
         type: 'MEAL_TEMPLATES',
         meteor: {
           subscribe: () => Meteor.subscribe('mealTemplates'),
-          get: () => collection.find().fetch(),
+          get: () => collection.find({}, { sort: { time: 1 }}).fetch().sort((x, y) => {
+            if (!x.time || x.time > y.time) {
+              return 1;
+            }
+            if (!y.time || x.time < y.time) {
+              return -1;
+            }
+
+            return 0;
+          }),
         },
       });
     };
