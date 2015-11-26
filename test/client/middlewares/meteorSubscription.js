@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Tracker, TrackerStub, Computation, afterEach, beforeEach, describe, it, expect, sinon */
-import meteorSubscriptionMiddleware from '../../../app/client/middlewares/meteorSubscription';
+import meteorSubscriptionMiddleware from 'app/client/middlewares/meteorSubscription';
 
 describe('middlewares', () => {
   describe('meteorSubscription', () => {

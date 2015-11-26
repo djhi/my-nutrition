@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import addUserOnInsert from '../../../app/collections/common/addUserOnInsert';
+import addUserOnInsert from 'app/collections/common/addUserOnInsert';
 
 describe('collections', () => {
   describe('common', () => {

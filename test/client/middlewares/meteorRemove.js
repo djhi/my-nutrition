@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Computation, Tracker, afterEach, beforeEach, describe, it, expect, sinon */
-import { meteorRemove } from '../../../app/client/middlewares/meteorCrud';
+import { meteorRemove } from 'app/client/middlewares/meteorCrud';
 
 describe('middlewares', () => {
   describe('meteorCrud', () => {

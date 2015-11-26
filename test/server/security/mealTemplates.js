@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import registerMealTemplateSecurity from '../../../app/server/security/mealTemplates';
+import registerMealTemplateSecurity from 'app/server/security/mealTemplates';
 
 describe('server', () => {
   describe('security', () => {

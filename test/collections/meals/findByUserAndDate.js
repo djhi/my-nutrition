@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import findByUserAndDateFactory from '../../../app/collections/meals/findByUserAndDate';
+import findByUserAndDateFactory from 'app/collections/meals/findByUserAndDate';
 import moment from 'moment';
 
 describe('collections', () => {

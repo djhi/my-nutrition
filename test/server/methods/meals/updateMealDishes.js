@@ -1,5 +1,5 @@
 /* global Meteor, beforeEach, describe, it, expect, sinon */
-import updateMealDishesFactory from '../../../app/server/methods/updateMealDishes';
+import updateMealDishesFactory from 'app/server/methods/meals/updateMealDishes';
 
 describe('server', () => {
   describe('methods', () => {

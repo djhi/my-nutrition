@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Computation, Tracker, afterEach, beforeEach, describe, it, expect, sinon */
-import meteorDatasourceMiddleware from '../../../app/client/middlewares/meteorDatasource';
+import meteorDatasourceMiddleware from 'app/client/middlewares/meteorDatasource';
 
 describe('middlewares', () => {
   describe('meteorDatasource', () => {

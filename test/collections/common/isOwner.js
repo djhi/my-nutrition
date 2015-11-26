@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import isOwner from '../../../app/collections/common/isOwner';
+import isOwner from 'app/collections/common/isOwner';
 
 describe('collections', () => {
   describe('common', () => {

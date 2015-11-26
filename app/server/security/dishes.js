@@ -1,3 +1,6 @@
+/**
+ * Apply the security rules on the Dish collection
+ */
 export default function(dishCollection) {
   dishCollection.allow({
     insert: (userId, doc) => userId === doc.userId,

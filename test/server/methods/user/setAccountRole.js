@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, beforeEach, describe, it, expect, sinon */
-import setAccountRoleFactory from '../../../app/server/methods/setAccountRole';
+import setAccountRoleFactory from 'app/server/methods/user/setAccountRole';
 
 describe('server', () => {
   describe('methods', () => {

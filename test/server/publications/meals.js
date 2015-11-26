@@ -1,5 +1,5 @@
 /* global Meteor, beforeEach, describe, it, expect, sinon */
-import registerMealPublications from '../../../app/server/publications/meals';
+import registerMealPublications from 'app/server/publications/meals';
 import moment from 'moment';
 
 describe('server', () => {

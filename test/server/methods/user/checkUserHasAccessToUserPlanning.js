@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import checkUserHasAccessToUserPlanningFactory from '../../../app/server/methods/checkUserHasAccessToUserPlanning';
+import checkUserHasAccessToUserPlanningFactory from 'app/server/methods/user/checkUserHasAccessToUserPlanning';
 
 describe('server', () => {
   describe('methods', () => {

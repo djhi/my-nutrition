@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global before, describe, it, expect, sinon */
-import {setTitle, SET_TITLE} from '../../../app/client/actions/app';
+import {setTitle, SET_TITLE} from 'app/client/actions/app';
 
 describe('actions', () => {
   describe('app', () => {

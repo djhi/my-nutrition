@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { Dishes } from '../../../collections/dishes';
-import { Meals } from '../../../collections/meals';
-import { MealTemplates } from '../../../collections/mealTemplates';
+import { Dishes } from 'app/collections/dishes';
+import { Meals } from 'app/collections/meals';
+import { MealTemplates } from 'app/collections/mealTemplates';
 
 import { loadCoacheeFactory } from '../../actions/coachees';
 import { setPlanningDate } from '../../actions/planning';

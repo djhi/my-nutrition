@@ -1,5 +1,5 @@
 /* global Meteor, beforeEach, describe, it, expect, sinon */
-import moveDishToMealFactory from '../../../app/server/methods/moveDishToMeal';
+import moveDishToMealFactory from 'app/server/methods/meals/moveDishToMeal';
 
 describe('server', () => {
   describe('methods', () => {

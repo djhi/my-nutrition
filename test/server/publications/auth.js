@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import registerAuthPublications from '../../../app/server/publications/auth';
+import registerAuthPublications from 'app/server/publications/auth';
 
 describe('server', () => {
   describe('publications', () => {

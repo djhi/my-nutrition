@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import takenAt from '../../../app/collections/meals/takenAt';
+import takenAt from 'app/collections/meals/takenAt';
 import moment from 'moment';
 
 describe('collections', () => {

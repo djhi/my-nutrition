@@ -8,7 +8,7 @@ import {
   newMealFactory,
   updateMealTimeFactory,
 }
-from '../../../app/client/actions/meals';
+from 'app/client/actions/meals';
 
 describe('actions', () => {
   const mealCollection = {

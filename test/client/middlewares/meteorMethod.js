@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, afterEach, beforeEach, describe, it, expect, sinon */
-import meteorMethod from '../../../app/client/middlewares/meteorMethod';
+import meteorMethod from 'app/client/middlewares/meteorMethod';
 
 describe('middlewares', () => {
   describe('meteorMethod', () => {

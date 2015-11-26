@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, beforeEach, describe, it, expect, sinon */
-import registerDishesHooks from '../../../app/server/hooks/dishes';
+import registerDishesHooks from 'app/server/hooks/dishes';
 
 describe('server', () => {
   describe('hooks', () => {

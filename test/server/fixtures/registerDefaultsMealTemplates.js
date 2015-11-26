@@ -1,7 +1,7 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, beforeEach, describe, it, expect, sinon */
 import lodash from 'lodash';
-import registerDefaultsMealTemplates, { DefaultMealTemplates } from '../../../app/server/fixtures/registerDefaultsMealTemplates';
+import registerDefaultsMealTemplates, { DefaultMealTemplates } from 'app/server/fixtures/registerDefaultsMealTemplates';
 
 describe('server', () => {
   describe('fixtures', () => {

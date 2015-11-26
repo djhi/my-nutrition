@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import createOAuthServiceConfigurationFactory from '../../../app/server/methods/createOAuthServiceConfiguration';
+import createOAuthServiceConfigurationFactory from 'app/server/methods/createOAuthServiceConfiguration';
 
 describe('server', () => {
   describe('methods', () => {

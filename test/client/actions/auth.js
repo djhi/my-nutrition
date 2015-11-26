@@ -10,11 +10,11 @@ import {
   setAccountAsCoach,
   setAccountAsCoachee,
   signUp,
-} from '../../../app/client/actions/auth';
+} from 'app/client/actions/auth';
 
 import {
   NEW_NOTIFICATION,
-} from '../../../app/client/actions/notifications';
+} from 'app/client/actions/notifications';
 
 describe('actions', () => {
   describe('auth', () => {

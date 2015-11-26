@@ -7,7 +7,7 @@ import {
   newNotification,
   newSuccessNotification,
   newErrorNotification,
-} from '../../../app/client/actions/notifications';
+} from 'app/client/actions/notifications';
 
 describe('actions', () => {
   describe('notification', () => {

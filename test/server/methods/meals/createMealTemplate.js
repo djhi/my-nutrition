@@ -1,5 +1,5 @@
 /* global Meteor, beforeEach, describe, it, expect, sinon */
-import createMealTemplateFactory from '../../../app/server/methods/createMealTemplate';
+import createMealTemplateFactory from 'app/server/methods/meals/createMealTemplate';
 
 describe('server', () => {
   describe('methods', () => {
@@ -29,7 +29,7 @@ describe('server', () => {
       findByMeal: sinon.stub().returns([{
         _id: 'not expected',
         mealId: 'not expected',
-        position: 1
+        position: 1,
       }]),
       insert: sinon.spy(),
     };
@@ -88,7 +88,7 @@ describe('server', () => {
             name: 'find_me',
             time: date,
             userId,
-          }
+          },
         });
       });
 

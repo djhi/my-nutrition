@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import registerDishSecurity from '../../../app/server/security/dishes';
+import registerDishSecurity from 'app/server/security/dishes';
 
 describe('server', () => {
   describe('security', () => {

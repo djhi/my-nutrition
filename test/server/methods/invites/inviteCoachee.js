@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, beforeEach, describe, it, expect, sinon */
-import inviteCoacheeFactory from '../../../app/server/methods/inviteCoachee';
+import inviteCoacheeFactory from 'app/server/methods/invites/inviteCoachee';
 
 describe('server', () => {
   describe('methods', () => {

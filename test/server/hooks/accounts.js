@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, beforeEach, describe, it, expect, sinon */
-import registerAccountsHooks from '../../../app/server/hooks/accounts';
+import registerAccountsHooks from 'app/server/hooks/accounts';
 
 describe('server', () => {
   describe('hooks', () => {
@@ -19,10 +19,10 @@ describe('server', () => {
 
       const inviteCollection = {
         findOne: sinon.stub(),
-      }
+      };
 
       const determineEmail = sinon.stub();
-      const setUserCoach = sinon.stub(),
+      const setUserCoach = sinon.stub();
 
       beforeEach(() => {
         Accounts.onCreateUser.reset();

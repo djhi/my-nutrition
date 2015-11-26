@@ -5,7 +5,7 @@ import {
   deleteMealTemplateFactory,
   newMealTemplate,
   newMealFromTemplate,
-} from '../../../app/client/actions/mealTemplates';
+} from 'app/client/actions/mealTemplates';
 
 import moment from 'moment';
 

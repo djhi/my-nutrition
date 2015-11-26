@@ -13,21 +13,21 @@ import registerAuthHooks from './server/hooks/accounts';
 import registerDishHooks from './server/hooks/dishes';
 import registerMealHooks from './server/hooks/meals';
 
-import copyDishToMealFactory from './server/methods/copyDishToMeal';
-import checkUserHasAccessToUserPlanningFactory from './server/methods/checkUserHasAccessToUserPlanning';
+import copyDishToMealFactory from './server/methods/meals/copyDishToMeal';
+import checkUserHasAccessToUserPlanningFactory from './server/methods/user/checkUserHasAccessToUserPlanning';
 import createOAuthServiceConfigurationFactory from './server/methods/createOAuthServiceConfiguration';
-import createMealFromTemplateFactory from './server/methods/createMealFromTemplate';
-import createMealTemplateFactory from './server/methods/createMealTemplate';
-import getUserDataFactory from './server/methods/getUserData';
-import incrementDishesPositionFactory from './server/methods/incrementDishesPosition';
-import inviteCoachFactory from './server/methods/inviteCoach';
-import inviteCoacheeFactory from './server/methods/inviteCoachee';
-import moveDishToMealFactory from './server/methods/moveDishToMeal';
-import sendCoachInvitationFactory from './server/methods/sendCoachInvitation';
-import sendCoacheeInvitationFactory from './server/methods/sendCoacheeInvitation';
-import setAccountRoleFactory from './server/methods/setAccountRole';
-import setUserCoachFactory from './server/methods/setUserCoach';
-import updateMealDishesFactory from './server/methods/updateMealDishes';
+import createMealFromTemplateFactory from './server/methods/meals/createMealFromTemplate';
+import createMealTemplateFactory from './server/methods/meals/createMealTemplate';
+import getUserDataFactory from './server/methods/user/getUserData';
+import incrementDishesPositionFactory from './server/methods/meals/incrementDishesPosition';
+import inviteCoachFactory from './server/methods/invites/inviteCoach';
+import inviteCoacheeFactory from './server/methods/invites/inviteCoachee';
+import moveDishToMealFactory from './server/methods/meals/moveDishToMeal';
+import sendCoachInvitationFactory from './server/methods/invites/sendCoachInvitation';
+import sendCoacheeInvitationFactory from './server/methods/invites/sendCoacheeInvitation';
+import setAccountRoleFactory from './server/methods/user/setAccountRole';
+import setUserCoachFactory from './server/methods/user/setUserCoach';
+import updateMealDishesFactory from './server/methods/meals/updateMealDishes';
 
 import registerDefaultsMealTemplates from './server/fixtures/registerDefaultsMealTemplates';
 

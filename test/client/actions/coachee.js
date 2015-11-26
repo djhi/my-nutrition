@@ -4,7 +4,7 @@ import {
   loadCoacheeFactory,
   loadCoacheesFactory,
 }
-from '../../../app/client/actions/coachees';
+from 'app/client/actions/coachees';
 
 describe('actions', () => {
   const coacheeCollection = {

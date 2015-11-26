@@ -17,6 +17,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     root: path.join(__dirname, '../app'),
+    alias: {
+      app: path.join(__dirname, '../app'),
+    },
   },
   module: {
     loaders: [{

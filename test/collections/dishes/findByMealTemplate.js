@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import findByMealTemplateFactory from '../../../app/collections/dishes/findByMealTemplate';
+import findByMealTemplateFactory from 'app/collections/dishes/findByMealTemplate';
 
 describe('collections', () => {
   describe('dishes', () => {

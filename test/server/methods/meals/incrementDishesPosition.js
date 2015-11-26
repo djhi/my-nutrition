@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import incrementDishesPositionFactory from '../../../app/server/methods/incrementDishesPosition';
+import incrementDishesPositionFactory from 'app/server/methods/meals/incrementDishesPosition';
 
 describe('server', () => {
   describe('methods', () => {

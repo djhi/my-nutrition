@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { assign } from 'lodash';
-import { MealTypes } from '../../collections/mealTemplates';
+import { MealTypes } from 'app/collections/mealTemplates';
 
 export const DefaultMealTemplates = [{
   name: 'Petit déjeuner',

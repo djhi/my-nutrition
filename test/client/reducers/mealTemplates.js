@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import reducer, { initialState } from '../../../app/client/reducers/mealTemplates';
+import reducer, { initialState } from 'app/client/reducers/mealTemplates';
 
 describe('reducers', () => {
   describe('mealTemplates', () => {

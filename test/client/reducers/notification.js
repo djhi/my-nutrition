@@ -1,7 +1,7 @@
 /* eslint no-unused-expressions: 0 */
 /* global beforeEach, describe, it, expect, sinon */
-import reducer, { initialState } from '../../../app/client/reducers/notification';
-import { NEW_NOTIFICATION, CLEAR_NOTIFICATION } from '../../../app/client/actions/notifications';
+import reducer, { initialState } from 'app/client/reducers/notification';
+import { NEW_NOTIFICATION, CLEAR_NOTIFICATION } from 'app/client/actions/notifications';
 
 describe('reducers', () => {
   describe('notification', () => {

@@ -4,7 +4,7 @@ import {
   inviteCoach,
   inviteCoachee,
 }
-from '../../../app/client/actions/invites';
+from 'app/client/actions/invites';
 
 describe('actions', () => {
   const dispatch = sinon.spy();

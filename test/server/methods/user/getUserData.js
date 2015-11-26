@@ -1,5 +1,5 @@
 /* global beforeEach, describe, it, expect, sinon */
-import getUserDataFactory from '../../../app/server/methods/getUserData';
+import getUserDataFactory from 'app/server/methods/user/getUserData';
 
 describe('server', () => {
   describe('methods', () => {

@@ -1,3 +1,6 @@
+/**
+ * Apply the security rules on the MealTemplate collection
+ */
 export default function(mealTemplateCollection) {
   mealTemplateCollection.allow({
     insert: (userId, doc) => userId === doc.userId,

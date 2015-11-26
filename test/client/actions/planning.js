@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 /* global before, describe, it, expect, sinon */
-import { setPlanningDate } from '../../../app/client/actions/planning';
+import { setPlanningDate } from 'app/client/actions/planning';
 import moment from 'moment';
 
 describe('actions', () => {

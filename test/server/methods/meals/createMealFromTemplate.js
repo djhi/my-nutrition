@@ -1,5 +1,5 @@
 /* global Meteor, beforeEach, describe, it, expect, sinon */
-import createMealFromTemplateFactory from '../../../app/server/methods/createMealFromTemplate';
+import createMealFromTemplateFactory from 'app/server/methods/meals/createMealFromTemplate';
 
 describe('server', () => {
   describe('methods', () => {

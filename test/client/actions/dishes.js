@@ -6,7 +6,7 @@ import {
   moveDishToMeal,
   newMealDishFactory,
   updateMealDishFactory,
-} from '../../../app/client/actions/dishes';
+} from 'app/client/actions/dishes';
 
 describe('actions', () => {
   const insert = sinon.stub();
