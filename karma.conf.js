@@ -25,8 +25,7 @@ module.exports = function karmaConf(config) {
     ],
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {
-      './test/**/*.js': ['webpack', 'sourcemap'],
-      './app/**/*.js': ['webpack', 'sourcemap'],
+      './test/karma.bundle.js': [ 'webpack', 'sourcemap' ],
     },
     // use our own webpack config to mirror test setup
     webpack: webpackConfig,

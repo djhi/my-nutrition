@@ -11,7 +11,7 @@ import moment from 'moment';
 
 describe('actions', () => {
   const mealTemplateCollection = {
-    find: sinon.stub().returns({ fetch: sinon.stub() }),
+    find: sinon.stub().returns({ fetch: sinon.stub().returns([]) }),
     findOne: sinon.stub(),
     insert: sinon.stub(),
     remove: sinon.stub(),

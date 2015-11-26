@@ -2,13 +2,11 @@
 import registerDishSecurity from './server/security/dishes';
 import registerMealSecurity from './server/security/meals';
 import registerMealTemplateSecurity from './server/security/mealTemplates';
-import registerMealTypeDefaultSecurity from './server/security/mealTypeDefaults';
 import registerUserSecurity from './server/security/users';
 
 import registerAuthPublications from './server/publications/auth';
 import registerCoacheesPublications from './server/publications/coachees';
 import registerMealPublications from './server/publications/meals';
-import registerMealTypeDefaultPublications from './server/publications/mealTypeDefaults';
 import registerMealTemplatePublications from './server/publications/mealTemplates';
 
 import registerAuthHooks from './server/hooks/accounts';
@@ -31,13 +29,12 @@ import setAccountRoleFactory from './server/methods/setAccountRole';
 import setUserCoachFactory from './server/methods/setUserCoach';
 import updateMealDishesFactory from './server/methods/updateMealDishes';
 
-import registerMealTypeDefaults from './server/fixtures/mealTypeDefaults';
+import registerDefaultsMealTemplates from './server/fixtures/registerDefaultsMealTemplates';
 
 import { Dishes } from './collections/dishes';
 import { Invites } from './collections/invites';
 import { Meals } from './collections/meals';
 import { MealTemplates } from './collections/mealTemplates';
-import { MealTypeDefaults } from './collections/mealTypes';
 
 const setAccountRole = setAccountRoleFactory(Roles);
 const incrementDishesPosition = incrementDishesPositionFactory(Dishes);
@@ -46,10 +43,9 @@ const updateMealDishes = updateMealDishesFactory(Dishes, Meals);
 registerDishSecurity(Dishes);
 registerMealSecurity(Meals);
 registerMealTemplateSecurity(MealTemplates);
-registerMealTypeDefaultSecurity(MealTypeDefaults);
 registerUserSecurity(Meteor.users);
 
-registerAuthHooks(MealTypeDefaults, Invites, AccountsEmail.extract, setUserCoachFactory(Meteor.users));
+registerAuthHooks(MealTemplates, Invites, AccountsEmail.extract, setUserCoachFactory(Meteor.users));
 registerDishHooks(Dishes, updateMealDishes);
 registerMealHooks(Meals, Dishes);
 
@@ -57,7 +53,6 @@ registerAuthPublications(getUserDataFactory(Meteor.users));
 registerCoacheesPublications(Meteor.users);
 registerMealPublications(Meals, checkUserHasAccessToUserPlanningFactory(Meteor.users));
 registerMealTemplatePublications(MealTemplates);
-registerMealTypeDefaultPublications(MealTypeDefaults);
 
 Meteor.methods({
   createMealFromTemplate: createMealFromTemplateFactory(Meals, Dishes, MealTemplates),
@@ -111,5 +106,5 @@ Meteor.startup(() => {
     });
   }
 
-  registerMealTypeDefaults(MealTypeDefaults, Meteor.users);
+  registerDefaultsMealTemplates(MealTemplates, Meteor.users);
 });

@@ -10,7 +10,7 @@ describe('server', () => {
         foo: 'bar',
       });
 
-      const mealTypeDefaultCollection = {
+      const mealTemplateCollection = {
         find: sinon.stub().returns({
           forEach: forEach,
         }),
@@ -27,8 +27,8 @@ describe('server', () => {
       beforeEach(() => {
         Accounts.onCreateUser.reset();
         forEach.reset();
-        mealTypeDefaultCollection.find.reset();
-        mealTypeDefaultCollection.insert.reset();
+        mealTemplateCollection.find.reset();
+        mealTemplateCollection.insert.reset();
         inviteCollection.findOne.reset();
         determineEmail.reset();
         setUserCoach.reset();
@@ -41,13 +41,13 @@ describe('server', () => {
       });
 
       it('should find meal types defaults', () => {
-        registerAccountsHooks(mealTypeDefaultCollection, inviteCollection, determineEmail, setUserCoach);
+        registerAccountsHooks(mealTemplateCollection, inviteCollection, determineEmail, setUserCoach);
         const call = Accounts.onCreateUser.getCall(0);
         call.args[0]({}, {
           _id: 'fake_id',
         });
 
-        expect(mealTypeDefaultCollection.find).to.have.been.calledWith({
+        expect(mealTemplateCollection.find).to.have.been.calledWith({
           userId: {
             $exists: false,
           },
@@ -55,20 +55,20 @@ describe('server', () => {
       });
 
       it('should insert meal types defaults for specified user', () => {
-        registerAccountsHooks(mealTypeDefaultCollection, inviteCollection, determineEmail, setUserCoach);
+        registerAccountsHooks(mealTemplateCollection, inviteCollection, determineEmail, setUserCoach);
         const call = Accounts.onCreateUser.getCall(0);
         call.args[0]({}, {
           _id: 'fake_id',
         });
 
-        expect(mealTypeDefaultCollection.insert).to.have.been.calledWith({
+        expect(mealTemplateCollection.insert).to.have.been.calledWith({
           foo: 'bar',
           userId: 'fake_id',
         });
       });
 
       it('should return the passed user without profile if option does not contain one', () => {
-        registerAccountsHooks(mealTypeDefaultCollection, inviteCollection, determineEmail, setUserCoach);
+        registerAccountsHooks(mealTemplateCollection, inviteCollection, determineEmail, setUserCoach);
         const call = Accounts.onCreateUser.getCall(0);
         const result = call.args[0]({}, {
           _id: 'fake_id',
@@ -80,7 +80,7 @@ describe('server', () => {
       });
 
       it('should return the passed user with its profile if option contains one', () => {
-        registerAccountsHooks(mealTypeDefaultCollection, inviteCollection, determineEmail, setUserCoach);
+        registerAccountsHooks(mealTemplateCollection, inviteCollection, determineEmail, setUserCoach);
         const call = Accounts.onCreateUser.getCall(0);
         const result = call.args[0]({
           profile: 'foo',

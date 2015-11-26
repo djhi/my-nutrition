@@ -17,10 +17,8 @@ class Planning extends Component {
     loadCoachee: PropTypes.func.isRequired,
     loadMeals: PropTypes.func.isRequired,
     loadMealTemplates: PropTypes.func.isRequired,
-    loadMealTypeDefaults: PropTypes.func.isRequired,
     meals: PropTypes.array.isRequired,
     mealTemplates: PropTypes.array.isRequired,
-    mealTypeDefaults: PropTypes.array.isRequired,
     moveDishToMeal: PropTypes.func.isRequired,
     newMeal: PropTypes.func.isRequired,
     newMealFromTemplate: PropTypes.func.isRequired,
@@ -41,7 +39,6 @@ class Planning extends Component {
     this.props.setTitle('Planning nutritionnel');
 
     this.props.loadMealTemplates();
-    this.props.loadMealTypeDefaults();
     this.props.loadMeals(null, this.props.dateSelected);
   }
 
@@ -82,7 +79,7 @@ class Planning extends Component {
   }
 
   render() {
-    const { dateSelected, ready, meals, mealTemplates, mealTypeDefaults, planningUser, planningUserId, user } = this.props;
+    const { dateSelected, ready, meals, mealTemplates, planningUser, planningUserId, user } = this.props;
     const dateSelectedAsDate = moment(dateSelected, 'YYYY-MM-DD').toDate();
     const formattedDate = moment(dateSelected).format('LL');
     const canEdit = planningUserId === (user && user._id);
@@ -122,9 +119,7 @@ class Planning extends Component {
           {canEdit &&
               <div className="col-xs-12 hidden-md-up">
               <NewMealButton
-                mealTypeDefaults={mealTypeDefaults}
                 mealTemplates={mealTemplates}
-                onNewMeal={this.onNewMeal.bind(this)}
                 onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
               />
               <hr />
@@ -151,9 +146,7 @@ class Planning extends Component {
           {canEdit &&
             <div className="meal-action">
               <NewMealButton
-                mealTypeDefaults={mealTypeDefaults}
                 mealTemplates={mealTemplates}
-                onNewMeal={this.onNewMeal.bind(this)}
                 onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
               />
             </div>

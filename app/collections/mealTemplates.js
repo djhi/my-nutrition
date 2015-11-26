@@ -1,21 +1,31 @@
 /* global Mongo, SimpleSchema */
 import lodash from 'lodash';
 import { DishReferenceSchema } from './dishes';
-import { MealTypes } from './mealTypes';
 import addUserOnInsert from './common/addUserOnInsert';
+
+export const MealTypes = {
+  Breakfast: 'Breakfast',
+  Collation: 'Collation',
+  Lunch: 'Lunch',
+  Supper: 'Supper',
+};
 
 export const MealTemplateSchema = new SimpleSchema({
   name: {
     type: String,
     max: 50,
   },
-  type: {
-    type: String,
-    allowedValues: lodash.values(MealTypes),
-  },
   dishes: {
     type: [DishReferenceSchema],
     defaultValue: [],
+  },
+  time: {
+    type: Date,
+    optional: true,
+  },
+  type: {
+    type: String,
+    allowedValues: lodash.values(MealTypes),
   },
   userId: {
     type: String,

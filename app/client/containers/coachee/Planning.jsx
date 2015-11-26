@@ -7,12 +7,10 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { Dishes } from '../../../collections/dishes';
 import { Meals } from '../../../collections/meals';
 import { MealTemplates } from '../../../collections/mealTemplates';
-import { MealTypeDefaults } from '../../../collections/mealTypes';
 
 import { loadCoacheeFactory } from '../../actions/coachees';
 import { setPlanningDate } from '../../actions/planning';
 import { setTitle } from '../../actions/app';
-import { loadMealTypeDefaultsFactory } from '../../actions/mealTypeDefaults';
 import { loadMealTemplatesFactory, newMealTemplate, newMealFromTemplate } from '../../actions/mealTemplates';
 import { deleteMealFactory, loadMealsFactory, newMealFactory, updateMealTimeFactory } from '../../actions/meals';
 import { copyDishToMeal, deleteMealDishFactory, newMealDishFactory, moveDishToMeal, updateMealDishFactory } from '../../actions/dishes';
@@ -30,7 +28,6 @@ function mapStateToProps(state) {
     dateSelected: state.router.params.date || today,
     meals: state.meals.items,
     mealTemplates: state.mealTemplates.items,
-    mealTypeDefaults: state.mealTypeDefaults.items,
     ready: state.meals.ready,
   };
 }
@@ -43,7 +40,6 @@ function mapDispatchToProps(dispatch) {
     loadCoachee: loadCoacheeFactory(Meteor.users),
     loadMeals: loadMealsFactory(Meals),
     loadMealTemplates: loadMealTemplatesFactory(MealTemplates),
-    loadMealTypeDefaults: loadMealTypeDefaultsFactory(MealTypeDefaults),
     moveDishToMeal,
     newMeal: newMealFactory(Meals),
     newMealFromTemplate,
