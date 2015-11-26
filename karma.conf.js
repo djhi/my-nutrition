@@ -31,7 +31,72 @@ module.exports = function karmaConf(config) {
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true,
+      stats: {
+        // With console colors
+        colors: true,
+        // add the hash of the compilation
+        hash: false,
+        // add webpack version information
+        version: false,
+        // add timing information
+        timings: true,
+        // add assets information
+        assets: false,
+        // add chunk information
+        chunks: false,
+        // add built modules information to chunk information
+        chunkModules: false,
+        // add built modules information
+        modules: false,
+        // add also information about cached (not built) modules
+        cached: false,
+        // add information about the reasons why modules are included
+        reasons: false,
+        // add the source code of modules
+        source: true,
+        // add details to errors (like resolving log)
+        errorDetails: true,
+        // add the origins of chunks and chunk merging info
+        chunkOrigins: true,
+        // Add messages from child loaders
+        children: false,
+      },
     },
+
+    webpackServer: {
+      noInfo: true,
+      stats: {
+        // With console colors
+        colors: true,
+        // add the hash of the compilation
+        hash: false,
+        // add webpack version information
+        version: false,
+        // add timing information
+        timings: true,
+        // add assets information
+        assets: false,
+        // add chunk information
+        chunks: false,
+        // add built modules information to chunk information
+        chunkModules: false,
+        // add built modules information
+        modules: false,
+        // add also information about cached (not built) modules
+        cached: false,
+        // add information about the reasons why modules are included
+        reasons: false,
+        // add the source code of modules
+        source: true,
+        // add details to errors (like resolving log)
+        errorDetails: true,
+        // add the origins of chunks and chunk merging info
+        chunkOrigins: true,
+        // Add messages from child loaders
+        children: false,
+      },
+    },
+
     coverageReporter: {
       type: 'lcov',
       dir: 'coverage/',

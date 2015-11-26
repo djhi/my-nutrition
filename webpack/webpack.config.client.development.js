@@ -66,5 +66,6 @@ module.exports = lodash.assign(lodash.clone(config), {
     historyApiFallback: true,
     contentBase: devProps.contentBase,
     port: devProps.webpackPort,
+    noInfo: true,
   },
 });
