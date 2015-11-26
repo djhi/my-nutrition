@@ -1,9 +1,9 @@
 .PHONY: met test
 
 copy-conf:
-	cp --no-clobber ./settings/development/settings-dist.json ./settings/development/settings.json
-	cp --no-clobber ./settings/production/settings-dist.json ./settings/production/settings.json
-	cp --no-clobber ./settings/staging/settings-dist.json ./settings/staging/settings.json
+	cp -n ./settings/development/settings-dist.json ./settings/development/settings.json
+	cp -n ./settings/production/settings-dist.json ./settings/production/settings.json
+	cp -n ./settings/staging/settings-dist.json ./settings/staging/settings.json
 
 make install: copy-conf
 	npm install
