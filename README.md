@@ -53,6 +53,10 @@ met add react
 
 Deployment is handled by [MUP](https://github.com/arunoda/meteor-up).
 
+Configure MUP for your environments in `./settings/staging/mup.json` and `./settings/production/mup.json`.
+
+Deploy with either `make deploy-staging` or `make deploy-prod`.
+
 ## License
 
 **my-nutrition** is licensed under the MIT Licence, courtesy of @marmelab.
