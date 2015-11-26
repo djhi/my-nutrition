@@ -15,7 +15,7 @@ import { setTitle } from '../../actions/app';
 import { loadMealTypeDefaultsFactory } from '../../actions/mealTypeDefaults';
 import { loadMealTemplatesFactory, newMealTemplate, newMealFromTemplate } from '../../actions/mealTemplates';
 import { deleteMealFactory, loadMealsFactory, newMealFactory, updateMealTimeFactory } from '../../actions/meals';
-import { copyDishToMealFactory, deleteMealDishFactory, newMealDishFactory, moveDishToMealFactory, updateMealDishFactory } from '../../actions/dishes';
+import { copyDishToMeal, deleteMealDishFactory, newMealDishFactory, moveDishToMeal, updateMealDishFactory } from '../../actions/dishes';
 import { setUserPreferenceFactory } from '../../actions/profile';
 
 import Planning from '../../components/Planning';
@@ -37,14 +37,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    copyDishToMeal: copyDishToMealFactory(),
+    copyDishToMeal,
     deleteMeal: deleteMealFactory(Meals),
     deleteMealDish: deleteMealDishFactory(Dishes),
     loadCoachee: loadCoacheeFactory(Meteor.users),
     loadMeals: loadMealsFactory(Meals),
     loadMealTemplates: loadMealTemplatesFactory(MealTemplates),
     loadMealTypeDefaults: loadMealTypeDefaultsFactory(MealTypeDefaults),
-    moveDishToMeal: moveDishToMealFactory(Meteor),
+    moveDishToMeal,
     newMeal: newMealFactory(Meals),
     newMealFromTemplate,
     newMealTemplate,

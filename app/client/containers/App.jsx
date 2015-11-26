@@ -1,9 +1,8 @@
-/* global Meteor, Roles */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { clearNotification } from '../actions/notifications';
-import { logoutFactory } from '../actions/auth';
+import { logout } from '../actions/auth';
 import App from '../components/App';
 
 function mapStateToProps(state) {
@@ -18,7 +17,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     clearNotification,
-    logout: logoutFactory(Meteor),
+    logout,
   }, dispatch);
 }
 

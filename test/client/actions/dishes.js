@@ -1,9 +1,9 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, beforeEach, describe, it, expect, sinon */
 import {
-  copyDishToMealFactory,
+  copyDishToMeal,
   deleteMealDishFactory,
-  moveDishToMealFactory,
+  moveDishToMeal,
   newMealDishFactory,
   updateMealDishFactory,
 } from '../../../app/client/actions/dishes';
@@ -57,7 +57,7 @@ describe('actions', () => {
 
     describe('copyDishToMeal', () => {
       it('should dispatch a DISHES_COPY meteor action with correct parameters', () => {
-        copyDishToMealFactory()('dish_id', 'meal_id', 14)(dispatch);
+        copyDishToMeal('dish_id', 'meal_id', 14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
           type: 'DISHES_COPY',
@@ -77,7 +77,7 @@ describe('actions', () => {
 
     describe('moveDishToMeal', () => {
       it('should dispatch a DISHES_MOVE meteor action with correct parameters', () => {
-        moveDishToMealFactory()('dish_id', 'meal_id', 14)(dispatch);
+        moveDishToMeal('dish_id', 'meal_id', 14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
           type: 'DISHES_MOVE',

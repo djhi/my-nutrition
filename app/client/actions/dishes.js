@@ -1,43 +1,39 @@
 /* global Meteor */
 import { assign, omit } from 'lodash';
 
-export function copyDishToMealFactory() {
-  return (dishId, mealId, position) => {
-    return dispatch => {
-      dispatch({
-        type: 'DISHES_COPY',
-        meteor: {
-          call: {
-            method: 'copyDishToMeal',
-            parameters: [
-              dishId,
-              mealId,
-              position,
-            ],
-          },
+export function copyDishToMeal(dishId, mealId, position) {
+  return dispatch => {
+    dispatch({
+      type: 'DISHES_COPY',
+      meteor: {
+        call: {
+          method: 'copyDishToMeal',
+          parameters: [
+            dishId,
+            mealId,
+            position,
+          ],
         },
-      });
-    };
+      },
+    });
   };
 }
 
-export function moveDishToMealFactory() {
-  return (dishId, mealId, position) => {
-    return dispatch => {
-      dispatch({
-        type: 'DISHES_MOVE',
-        meteor: {
-          call: {
-            method: 'moveDishToMeal',
-            parameters: [
-              dishId,
-              mealId,
-              position,
-            ],
-          },
+export function moveDishToMeal(dishId, mealId, position) {
+  return dispatch => {
+    dispatch({
+      type: 'DISHES_MOVE',
+      meteor: {
+        call: {
+          method: 'moveDishToMeal',
+          parameters: [
+            dishId,
+            mealId,
+            position,
+          ],
         },
-      });
-    };
+      },
+    });
   };
 }
 

@@ -21,17 +21,15 @@ export function loadUser() {
   };
 }
 
-export function logoutFactory() {
-  return () => {
-    return dispatch => {
-      Meteor.logout(err => {
-        if (err) {
-          return dispatch(newNotification('danger', 'Une erreur est survenue pendant votre déconnexion.'));
-        }
+export function logout() {
+  return dispatch => {
+    Meteor.logout(err => {
+      if (err) {
+        return dispatch(newNotification('danger', 'Une erreur est survenue pendant votre déconnexion.'));
+      }
 
-        dispatch(pushState(null, '/'));
-      });
-    };
+      dispatch(pushState(null, '/'));
+    });
   };
 }
 

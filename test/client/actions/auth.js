@@ -2,7 +2,7 @@
 /* global Accounts, Meteor, beforeEach, describe, it, expect, sinon */
 import {
   loadUser,
-  logoutFactory,
+  logout,
   loginWithGoogle,
   loginWithFacebook,
   loginWithPassword,
@@ -75,7 +75,7 @@ describe('actions', () => {
 
     describe('logout', () => {
       it('should call Meteor.logout()', () => {
-        logoutFactory()()(dispatch);
+        logout()(dispatch);
 
         expect(Meteor.logout).to.have.been.called;
       });
@@ -83,7 +83,7 @@ describe('actions', () => {
       it('should dipatch a NEW_NOTIFICATION when Meteor.logout() returns an error', () => {
         Meteor.logout = sinon.stub().callsArgWith(0, new Error());
 
-        logoutFactory()()(dispatch);
+        logout()(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
           type: NEW_NOTIFICATION,
