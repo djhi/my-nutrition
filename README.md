@@ -5,6 +5,8 @@ A Meteor application using Webpack, React and Redux for nutritionists who coach 
 
 ![Nutritional Planning](https://sc-cdn.scaleengine.net/i/b3f07b4aa745e90ed8301d465e8b5b00.png)
 
+You can see the roadmap [here](./ROADMAP.md).
+
 ## Installation
 
 Ensure you installed Meteor by following the [instructions](https://www.meteor.com/install), then run:
@@ -50,3 +52,7 @@ met add react
 ## Deployment
 
 Deployment is handled by [MUP](https://github.com/arunoda/meteor-up).
+
+## License
+
+**my-nutrition** is licensed under the MIT Licence, courtesy of @marmelab.
