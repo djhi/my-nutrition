@@ -1,5 +1,7 @@
 # Planned features:
 
+- Internationalization
+
 - Allow nutritionists to comment a client meal
 - Allow nutritionists to comment a client day planning
 
