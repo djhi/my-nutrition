@@ -1,0 +1,17 @@
+.dish {
+  cursor: pointer;
+  margin-bottom: .5em;
+
+  &:hover {
+    background-color: $card-cap-bg;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-top: 0;
+  }
+
+  .dropdown-toggle {
+    color: $gray-dark;
+  }
+}

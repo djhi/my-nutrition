@@ -10,7 +10,7 @@ const AppHeader = ({ loggingIn, title, user, onLogout }) => {
   const userHasNoCoach = user && Roles.userIsInRole(user, 'coachee') && !user.coachId;
 
   return (
-    <nav className="navbar navbar-dark bg-primary navbar-fixed-top">
+    <nav className="navbar bg-primary navbar-dark navbar-fixed-top">
       <Link to="/" className="navbar-brand">{title}</Link>
       <ul className="nav navbar-nav">
         {userIsCoach &&

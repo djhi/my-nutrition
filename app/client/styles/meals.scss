@@ -1,17 +1,3 @@
-.dish {
-  cursor: pointer;
-  margin-bottom: .5em;
-
-  &:hover {
-    background-color: $card-cap-bg;
-  }
-
-  h3 {
-    font-size: 1em;
-    margin-top: 0;
-  }
-}
-
 .meals {
   white-space: nowrap;
 }
@@ -20,18 +6,29 @@
 .meal-action {
   display: inline-block;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-right: $spacer;
   position: relative;
   vertical-align: top;
   white-space: normal;
   width: 300px;
+
+  &:first-child {
+    margin-left: $spacer;
+  }
+
+  &:last-child {
+    margin-right: $spacer;
+  }
 }
 
 .meal {
   .btn-link {
     margin: 0;
     padding: 0;
+  }
+
+  .dropdown-toggle {
+    color: #fff;
   }
 }
 

@@ -74,8 +74,8 @@ class Meal extends Component {
     const { newDish } = this.state;
 
     return connectDropTarget(
-      <div className="card">
-        <div className="card-header">
+      <div className="card meal">
+        <div className="card-header bg-primary">
           {meal.name}
 
           {canEdit &&

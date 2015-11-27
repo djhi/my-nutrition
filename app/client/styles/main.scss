@@ -1,8 +1,11 @@
+@import 'variables';
 @import '~bootstrap/scss/bootstrap';
+@import 'bootstrap-theme';
 @import '~react-date-picker/index.css';
 @import 'calendar';
 @import 'growl';
-@import 'meal';
+@import 'meals';
+@import 'dishes';
 @import 'meal-time';
 @import 'page-header';
 
@@ -13,7 +16,7 @@ html,
 }
 
 .main-content {
-  padding-top: 60px;
+  padding-top: 5em;
 }
 
 .border-less,
@@ -37,7 +40,6 @@ html,
 
 .profile-image {
   position:relative;
-  top: -.2em;
   margin-right: .5em;
 }
 

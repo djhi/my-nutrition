@@ -89,7 +89,7 @@ class Planning extends Component {
         <div className="row">
           <div className="col-xs-12">
             <h2>
-              {titlePrefix} <PlanningSelector
+              {titlePrefix}<PlanningSelector
                 dateSelected={dateSelectedAsDate}
                 ready={ready}
                 onDateChange={this.onDateChange.bind(this)}
@@ -116,41 +116,41 @@ class Planning extends Component {
               </Notification>
             }
           </div>
-          {canEdit &&
+          <div className="col-xs-12">
+            {canEdit &&
               <div className="col-xs-12 hidden-md-up">
-              <NewMealButton
-                mealTemplates={mealTemplates}
-                onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
-              />
-              <hr />
-            </div>
-          }
-          {meals.map(meal => (
-            <div className="meal" key={meal._id}>
-              <Meal
-                canEdit={canEdit}
-                key={`${meal._id}_meal`}
-                meal={meal}
-                meals={meals}
-                onCopyDishToMeal={this.props.copyDishToMeal}
-                onTimeChange={this.onMealTimeChange.bind(this)}
-                onNewDish={this.props.newMealDish}
-                onNewMealTemplate={this.props.newMealTemplate}
-                onDishDeleted={this.props.deleteMealDish}
-                onDishUpdated={this.props.updateMealDish}
-                onMealDeleted={this.props.deleteMeal}
-                onMoveDishToMeal={this.props.moveDishToMeal}
-              />
+                <NewMealButton
+                  mealTemplates={mealTemplates}
+                  onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
+                />
+                <hr />
+              </div>
+            }
+            {meals.map(meal => (
+                <Meal
+                  canEdit={canEdit}
+                  key={meal._id}
+                  meal={meal}
+                  meals={meals}
+                  onCopyDishToMeal={this.props.copyDishToMeal}
+                  onTimeChange={this.onMealTimeChange.bind(this)}
+                  onNewDish={this.props.newMealDish}
+                  onNewMealTemplate={this.props.newMealTemplate}
+                  onDishDeleted={this.props.deleteMealDish}
+                  onDishUpdated={this.props.updateMealDish}
+                  onMealDeleted={this.props.deleteMeal}
+                  onMoveDishToMeal={this.props.moveDishToMeal}
+                />
+            ))}
+            {canEdit &&
+              <div className="meal-action">
+                <NewMealButton
+                  mealTemplates={mealTemplates}
+                  onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
+                />
+              </div>
+            }
           </div>
-          ))}
-          {canEdit &&
-            <div className="meal-action">
-              <NewMealButton
-                mealTemplates={mealTemplates}
-                onNewMealFromTemplate={this.onNewMealFromTemplate.bind(this)}
-              />
-            </div>
-          }
         </div>
     );
   }
