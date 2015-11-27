@@ -3,7 +3,7 @@
 
 A Meteor application using Webpack, React and Redux for nutritionists who coach people and people wanting to keep track of their nutrition.
 
-![Nutritional Planning](https://sc-cdn.scaleengine.net/i/b3f07b4aa745e90ed8301d465e8b5b00.png)
+![Nutritional Planning](https://sc-cdn.scaleengine.net/i/4699b5eefe616db4ceca84b4e3d33c49.png)
 
 You can see the roadmap [here](./ROADMAP.md).
 
