@@ -28,7 +28,7 @@ export default class MealTime extends Component {
   }
 
   onChange() {
-    const time = this.refs.time.getValue();
+    const time = this.refs.time.value;
 
     this.setState({
       time,
@@ -43,7 +43,7 @@ export default class MealTime extends Component {
   }
 
   onTimeChange() {
-    const time = this.refs.time.getValue();
+    const time = this.refs.time.value;
     this.setState({ edition: false });
 
     this.props.onTimeChange(time);
