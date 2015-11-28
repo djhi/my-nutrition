@@ -1,6 +1,7 @@
 # Planned features:
 
 - Internationalization
+- Notifications (persistent, dismissable, etc.): a new client registered, your coach is viewing your planning, etc.
 
 - Allow nutritionists to comment a client meal
 - Allow nutritionists to comment a client day planning
