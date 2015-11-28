@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { routerStateReducer as router } from 'redux-router';
+import { routeReducer as router } from 'redux-simple-router';
 import app from './app';
 import auth from './auth';
 import coachees from './coachees';

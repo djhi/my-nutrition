@@ -37,6 +37,9 @@ class Coachees extends Component {
           </h2>
         </div>
         <div className="col-xs-12">
+          <p className="btn-group">
+            <Link to="/dashboard/invite" className="btn btn-primary">Inviter un client</Link>
+          </p>
           <div className="list-group">
             {coachees.map(coachee => <CoacheeItem key={coachee._id} coachee={coachee} />)}
           </div>

@@ -20,6 +20,7 @@ import createMealFromTemplateFactory from './server/methods/meals/createMealFrom
 import createMealTemplateFactory from './server/methods/meals/createMealTemplate';
 import getUserDataFactory from './server/methods/user/getUserData';
 import incrementDishesPositionFactory from './server/methods/meals/incrementDishesPosition';
+import initializeAccountFromInviteFactory from './server/methods/user/initializeAccountFromInvite';
 import inviteCoachFactory from './server/methods/invites/inviteCoach';
 import inviteCoacheeFactory from './server/methods/invites/inviteCoachee';
 import moveDishToMealFactory from './server/methods/meals/moveDishToMeal';
@@ -59,6 +60,9 @@ Meteor.methods({
   createMealTemplate: createMealTemplateFactory(Meals, Dishes, MealTemplates),
   copyDishToMeal: copyDishToMealFactory(Dishes, incrementDishesPosition, updateMealDishes),
   moveDishToMeal: moveDishToMealFactory(Dishes, incrementDishesPosition, updateMealDishes),
+  initializeAccountFromInvite: function initializeAccountFromInvite(token) {
+    return initializeAccountFromInviteFactory(Invites, setAccountRole, setUserCoachFactory(Meteor.users))(this.userId, token);
+  },
   inviteCoach: function inviteCoach(email) {
     return inviteCoachFactory(Invites, sendCoachInvitationFactory(Meteor.users))(this.userId, email);
   },

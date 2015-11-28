@@ -1,18 +1,21 @@
 /* global Accounts, Meteor, Roles */
 import { newNotification } from './notifications';
-import { pushState } from 'redux-router';
+import { updatePath } from 'redux-simple-router';
+
+export const USER_LOGGING_IN = 'USER_LOGGING_IN';
+export const USER_DATA = 'USER_DATA';
 
 export function loadUser() {
   return dispatch => {
     dispatch({
-      type: 'USER_LOGGING_IN',
+      type: USER_LOGGING_IN,
       meteor: {
         get: () => Meteor.loggingIn(),
       },
     });
 
     dispatch({
-      type: 'USER_DATA',
+      type: USER_DATA,
       meteor: {
         subscribe: () => Meteor.subscribe('userData'),
         get: () => Meteor.user(),
@@ -28,7 +31,7 @@ export function logout() {
         return dispatch(newNotification('danger', 'Une erreur est survenue pendant votre déconnexion.'));
       }
 
-      dispatch(pushState(null, '/'));
+      dispatch(updatePath('/'));
     });
   };
 }
@@ -40,6 +43,7 @@ export function setAccountAsCoach() {
       meteor: {
         call: {
           method: 'setAccountAsCoach',
+          onSuccess: () => dispatch(updatePath('/dashboard')),
         },
       },
     });
@@ -53,28 +57,66 @@ export function setAccountAsCoachee() {
       meteor: {
         call: {
           method: 'setAccountAsCoachee',
+          onSuccess: () => dispatch(updatePath('/planning')),
         },
       },
     });
   };
 }
 
-export function loginWithGoogle() {
+export function initializeAccountFromInvite(token) {
+  return dispatch => {
+    dispatch({
+      type: 'INITIALIZE_ACCOUNT_FROM_INVITE',
+      meteor: {
+        call: {
+          method: 'initializeAccountFromInvite',
+          parameters: [token],
+          onSuccess: role => {
+            if (role === 'coachee') {
+              return dispatch(updatePath('/planning'));
+            }
+
+            dispatch(updatePath('/dashboard'));
+          },
+        },
+      },
+    });
+  };
+}
+
+export function handleSignedIn(dispatch, token) {
+  const user = Meteor.user();
+
+  if (user && (!user.roles || user.roles.length === 0)) {
+    if (token) {
+      return dispatch(initializeAccountFromInvite(token));
+    }
+
+    dispatch(updatePath(`/account-type`));
+  }
+}
+
+export function loginWithGoogle(token) {
   return dispatch => {
     Meteor.loginWithGoogle(err => {
       if (err) {
         return dispatch(newNotification('danger', 'Une erreur est survenue pendant votre authentification.'));
       }
+
+      handleSignedIn(dispatch, token);
     });
   };
 }
 
-export function loginWithFacebook() {
+export function loginWithFacebook(token) {
   return dispatch => {
     Meteor.loginWithFacebook(err => {
       if (err) {
         return dispatch(newNotification('danger', 'Une erreur est survenue pendant votre authentification.'));
       }
+
+      handleSignedIn(dispatch, token);
     });
   };
 }
@@ -99,9 +141,9 @@ export function requirePasswordReset(email) {
   };
 }
 
-export function signUp(email, password, name) {
+export function signUp(email, password, name, token) {
   return dispatch => {
-    Accounts.createUser({email, password, profile: { name } }, err => {
+    Accounts.createUser({email, password, profile: { name, token } }, err => {
       if (err) {
         return dispatch(newNotification('danger', 'Une erreur est survenue pendant la création de votre compte.'));
       }

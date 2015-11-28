@@ -1,4 +1,6 @@
 /* global Mongo, SimpleSchema */
+import findByTokenFactory from './invites/findByToken';
+
 export const InviteSchema = new SimpleSchema({
   userId: {
     type: String,
@@ -23,3 +25,5 @@ export const InviteSchema = new SimpleSchema({
 
 export const Invites = new Mongo.Collection('invites');
 Invites.attachSchema(InviteSchema);
+
+Invites.findByToken = findByTokenFactory(Invites);

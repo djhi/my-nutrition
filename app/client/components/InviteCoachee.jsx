@@ -25,10 +25,9 @@ const InviteCoachee = ({inviteCoachee}) => (
             isEmail: 'Email invalide',
           }}
         />
-        <div className="btn-group">
-          <button className="btn btn-primary" ref="submit" type="submit">Envoyer l'invitation</button>
-          <Link to="/dashboard" className="btn btn-link">Annuler</Link>
-        </div>
+
+        <button className="btn btn-primary" type="submit">Envoyer l'invitation</button>
+        <Link to="/dashboard" className="btn btn-link">Annuler</Link>
       </Form>
     </div>
   </div>
