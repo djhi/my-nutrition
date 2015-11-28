@@ -4,7 +4,7 @@ export default function(inviteCollection, setAccountRole, setUserCoach) {
     const invitation = inviteCollection.findByToken(token);
 
     if (!invitation) {
-      return new Meteor.Error(404, 'not found', 'invitation cannot be found');
+      throw new Meteor.Error(404, 'not found', 'invitation cannot be found');
     }
 
     setAccountRole(userId, invitation.role);
