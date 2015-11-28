@@ -27,6 +27,7 @@ describe('actions', () => {
               parameters: [
                 'foo',
               ],
+              onSuccess: sinon.match.func,
             },
           },
         });
@@ -45,6 +46,7 @@ describe('actions', () => {
               parameters: [
                 'foo',
               ],
+              onSuccess: sinon.match.func,
             },
           },
         });

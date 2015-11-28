@@ -13,11 +13,9 @@ describe('actions', () => {
         setPlanningDate(dateSelected)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          payload: {
-            args: [null, `/planning/${dateFormatted}`],
-            method: 'pushState',
-          },
-          type: '@@reduxReactRouter/historyAPI',
+          avoidRouterUpdate: false,
+          path: `/planning/${dateFormatted}`,
+          type: '@@router/UPDATE_PATH',
         });
       });
 
@@ -28,11 +26,9 @@ describe('actions', () => {
         setPlanningDate(dateSelected, 'userId', 'userName')(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          payload: {
-            args: [null, `/planning/userId/userName/${dateFormatted}`],
-            method: 'pushState',
-          },
-          type: '@@reduxReactRouter/historyAPI',
+          avoidRouterUpdate: false,
+          path: `/planning/userId/userName/${dateFormatted}`,
+          type: '@@router/UPDATE_PATH',
         });
       });
     });
