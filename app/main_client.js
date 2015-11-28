@@ -2,10 +2,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { ReduxRouter } from 'redux-router';
+import { Router } from 'react-router';
 import moment from 'moment';
+import createHistory from 'history/lib/createBrowserHistory';
 
 import configureStore from './client/store';
+import routes from './client/routes';
 import { loadUser } from './client/actions/auth';
 
 // Tether is required by bootstrap components such as tooltips and popovers
@@ -17,7 +19,8 @@ require('bootstrap');
 
 import './client/styles/main.scss';
 
-const store = configureStore();
+const history = createHistory();
+const store = configureStore(history);
 
 // Dispatch the loadUser action immediatly so that the current user is available
 // in the global state reactivly
@@ -30,7 +33,9 @@ Meteor.startup(() => {
 
   render(
     <Provider store={store}>
-      <ReduxRouter/>
+      <Router history={history}>
+        {routes}
+      </Router>
     </Provider>,
     document.getElementById('root')
   );

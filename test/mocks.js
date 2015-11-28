@@ -23,6 +23,10 @@ global.Computation = {
   stop: sinon.spy(),
 };
 
+global.Email = {
+  send: sinon.spy(),
+};
+
 global.Meteor = {
   call: sinon.stub(),
   loggingIn: sinon.stub().returns(true),

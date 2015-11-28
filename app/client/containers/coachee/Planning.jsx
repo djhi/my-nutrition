@@ -20,12 +20,12 @@ import Planning from '../../components/Planning';
 
 const today = moment().format('YYYY-MM-DD');
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
     user: state.auth.user,
     planningUser: state.coachees.current,
-    planningUserId: state.router.params.userId || state.auth.user && state.auth.user._id,
-    dateSelected: state.router.params.date || today,
+    planningUserId: props.params.userId || state.auth.user && state.auth.user._id,
+    dateSelected: props.params.date || today,
     meals: state.meals.items,
     mealTemplates: state.mealTemplates.items,
     ready: state.meals.ready,

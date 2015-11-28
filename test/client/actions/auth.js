@@ -10,11 +10,13 @@ import {
   setAccountAsCoach,
   setAccountAsCoachee,
   signUp,
-} from 'app/client/actions/auth';
+}
+from 'app/client/actions/auth';
 
 import {
   NEW_NOTIFICATION,
-} from 'app/client/actions/notifications';
+}
+from 'app/client/actions/notifications';
 
 describe('actions', () => {
   describe('auth', () => {
@@ -159,11 +161,15 @@ describe('actions', () => {
       it('should call Meteor.forgotPassword()', () => {
         requirePasswordReset('email')(dispatch);
 
-        expect(Meteor.forgotPassword).to.have.been.calledWith({email: 'email'});
+        expect(Meteor.forgotPassword).to.have.been.calledWith({
+          email: 'email',
+        });
       });
 
       it('should dipatch a NEW_NOTIFICATION when Meteor.forgotPassword() returns an error', () => {
-        Meteor.forgotPassword.withArgs({email: 'email_error'}).callsArgWith(1, new Error());
+        Meteor.forgotPassword.withArgs({
+          email: 'email_error',
+        }).callsArgWith(1, new Error());
 
         requirePasswordReset('email_error')(dispatch);
 
@@ -184,6 +190,7 @@ describe('actions', () => {
           meteor: {
             call: {
               method: 'setAccountAsCoach',
+              onSuccess: sinon.match.func,
             },
           },
         });
@@ -199,6 +206,7 @@ describe('actions', () => {
           meteor: {
             call: {
               method: 'setAccountAsCoachee',
+              onSuccess: sinon.match.func,
             },
           },
         });
@@ -207,21 +215,29 @@ describe('actions', () => {
 
     describe('signUp', () => {
       it('should call Accounts.createUser()', () => {
-        signUp('email', 'password', 'name')(dispatch);
+        signUp('email', 'password', 'name', 'token')(dispatch);
 
-        expect(Accounts.createUser).to.have.been.calledWith({ email: 'email', password: 'password', profile: { name: 'name' } });
-      });
-
-      it('should dipatch a NEW_NOTIFICATION when Accounts.createUser() returns an error', () => {
-        Accounts.createUser.withArgs({
+        expect(Accounts.createUser).to.have.been.calledWith({
           email: 'email',
           password: 'password',
           profile: {
             name: 'name',
+            token: 'token',
+          },
+        });
+      });
+
+      it('should dipatch a NEW_NOTIFICATION when Accounts.createUser() returns an error', () => {
+        Accounts.createUser.withArgs({
+          email: 'invalid',
+          password: 'password',
+          profile: {
+            name: 'name',
+            token: undefined,
           },
         }).callsArgWith(1, new Error());
 
-        signUp('email', 'password', 'name')(dispatch);
+        signUp('invalid', 'password', 'name')(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
           type: NEW_NOTIFICATION,

@@ -1,3 +1,6 @@
+import { newSuccessNotification } from './notifications';
+import { updatePath } from 'redux-simple-router';
+
 export function inviteCoach(email) {
   return dispatch => {
     dispatch({
@@ -8,6 +11,7 @@ export function inviteCoach(email) {
           parameters: [
             email,
           ],
+          onSuccess: () => dispatch(newSuccessNotification('L\'invitation a été envoyée à votre coach !')),
         },
       },
     });
@@ -24,6 +28,11 @@ export function inviteCoachee(email) {
           parameters: [
             email,
           ],
+          onSuccess: () => {
+            dispatch(newSuccessNotification('L\'invitation a été envoyée à votre client !'));
+
+            dispatch(updatePath('/dashboard'));
+          },
         },
       },
     });
