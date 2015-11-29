@@ -45,5 +45,9 @@ module.exports = {
   plugins: [
     new webpack.PrefetchPlugin('react'),
     new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+      'Intl': 'imports?this=>global!exports?global.Intl!intl',
+    }),
   ],
 };
