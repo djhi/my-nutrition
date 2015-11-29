@@ -7,10 +7,12 @@ import App from '../components/App';
 
 function mapStateToProps(state) {
   return {
+    locale: state.app.locale,
+    loggingIn: state.auth.loggingIn,
+    messages: state.app.messages,
+    notification: state.notification,
     title: state.app.title,
     user: state.auth.user,
-    loggingIn: state.auth.loggingIn,
-    notification: state.notification,
   };
 }
 
