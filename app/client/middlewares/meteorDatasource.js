@@ -1,4 +1,6 @@
 /* global Meteor, Tracker */
+import actionTypeBuilder from '../actions/actionTypeBuilder';
+
 const changeComputations = [];
 
 /* This middleware is used for Meteor reactive source without subscriptions. It'll handle actions
@@ -36,7 +38,7 @@ export default store => next => action => {
     }
 
     store.dispatch({
-      type: `${action.type}_CHANGED`,
+      type: actionTypeBuilder.changed(action.type),
       data,
     });
   });

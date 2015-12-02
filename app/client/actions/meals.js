@@ -1,6 +1,12 @@
 /* global Meteor */
 import moment from 'moment';
 import { newErrorNotification } from './notifications';
+import actionTypeBuilder from './actionTypeBuilder';
+
+export const MEALS = actionTypeBuilder.type('MEALS');
+export const MEALS_REMOVE = actionTypeBuilder.type('MEALS_REMOVE');
+export const MEALS_INSERT = actionTypeBuilder.type('MEALS_INSERT');
+export const MEALS_UPDATE = actionTypeBuilder.type('MEALS_UPDATE');
 
 export function loadMealsFactory(mealCollection) {
   return (userId, date) => {
@@ -10,7 +16,7 @@ export function loadMealsFactory(mealCollection) {
 
     return dispatch => {
       dispatch({
-        type: 'MEALS',
+        type: MEALS,
         meteor: {
           subscribe: () => Meteor.subscribe('meals', dateStart, dateEnd, finalUserId, {
             onStop: error => {
@@ -30,7 +36,7 @@ export function deleteMealFactory(collection) {
   return id => {
     return dispatch => {
       dispatch({
-        type: 'MEALS_REMOVE',
+        type: MEALS_REMOVE,
         meteor: {
           remove: {
             id,
@@ -46,7 +52,7 @@ export function newMealFactory(collection) {
   return (type, name, date) => {
     return dispatch => {
       dispatch({
-        type: 'MEALS_INSERT',
+        type: MEALS_INSERT,
         meteor: {
           insert: {
             entity: {
@@ -66,7 +72,7 @@ export function updateMealTimeFactory(collection) {
   return (id, date) => {
     return dispatch => {
       dispatch({
-        type: 'MEALS_UPDATE',
+        type: MEALS_UPDATE,
         meteor: {
           update: {
             id,

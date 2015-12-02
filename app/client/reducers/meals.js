@@ -1,4 +1,6 @@
 import { assign } from 'lodash';
+import actionTypeBuilder from '../actions/actionTypeBuilder';
+import { MEALS } from '../actions/meals';
 
 export const initialState = {
   items: [],
@@ -9,10 +11,10 @@ export default function(state = initialState, action) {
   const { data, ready, type } = action;
 
   switch (type) {
-  case 'MEALS_READY':
+  case actionTypeBuilder.ready(MEALS):
     return assign({}, state, { ready });
 
-  case 'MEALS_CHANGED':
+  case actionTypeBuilder.changed(MEALS):
     return assign({}, state, { items: data });
 
   default:

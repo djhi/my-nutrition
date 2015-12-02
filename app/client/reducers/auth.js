@@ -1,4 +1,6 @@
 import { assign } from 'lodash';
+import actionTypeBuilder from '../actions/actionTypeBuilder';
+import { USER_LOGGING_IN, USER_DATA } from '../actions/auth';
 
 export const initialState = {
   user: null,
@@ -9,10 +11,10 @@ export default function(state = initialState, action) {
   const { data, type } = action;
 
   switch (type) {
-  case 'USER_DATA_CHANGED':
+  case actionTypeBuilder.changed(USER_DATA):
     return assign({}, state, { user: data });
 
-  case 'USER_LOGGING_IN_CHANGED':
+  case actionTypeBuilder.changed(USER_LOGGING_IN):
     return assign({}, state, { loggingIn: data });
 
   default:

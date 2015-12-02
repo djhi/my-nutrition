@@ -1,7 +1,9 @@
 /* global Meteor */
 import { updatePath } from 'redux-simple-router';
 import moment from 'moment';
-export const DATE_CHANGED = 'DATE_CHANGED';
+import actionTypeBuilder from './actionTypeBuilder';
+
+export const DATE_CHANGED = actionTypeBuilder.type('DATE_CHANGED');
 
 export function setPlanningDate(dateSelected, userId, userName) {
   return dispatch => {

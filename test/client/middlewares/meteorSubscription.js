@@ -1,6 +1,7 @@
 /* eslint no-unused-expressions: 0 */
 /* global Tracker, TrackerStub, Computation, afterEach, beforeEach, describe, it, expect, sinon */
 import meteorSubscriptionMiddleware from 'app/client/middlewares/meteorSubscription';
+import actionTypeBuilder from 'app/client/actions/actionTypeBuilder';
 
 describe('middlewares', () => {
   describe('meteorSubscription', () => {
@@ -98,7 +99,7 @@ describe('middlewares', () => {
       meteorSubscriptionMiddleware(store)(next)(action);
 
       expect(store.dispatch).to.have.been.calledWith({
-        type: 'dummy_sub_7_READY',
+        type: actionTypeBuilder.ready('dummy_sub_7'),
         ready: false,
       });
     });

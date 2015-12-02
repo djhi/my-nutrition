@@ -1,6 +1,11 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, beforeEach, describe, it, expect, sinon */
 import {
+  DISHES_REMOVE,
+  DISHES_COPY,
+  DISHES_MOVE,
+  DISHES_INSERT,
+  DISHES_UPDATE,
   copyDishToMeal,
   deleteMealDishFactory,
   moveDishToMeal,
@@ -44,7 +49,7 @@ describe('actions', () => {
         deleteMealDishFactory(dishCollection)(14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'DISHES_REMOVE',
+          type: DISHES_REMOVE,
           meteor: {
             remove: {
               id: 14,
@@ -60,7 +65,7 @@ describe('actions', () => {
         copyDishToMeal('dish_id', 'meal_id', 14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'DISHES_COPY',
+          type: DISHES_COPY,
           meteor: {
             call: {
               method: 'copyDishToMeal',
@@ -80,7 +85,7 @@ describe('actions', () => {
         moveDishToMeal('dish_id', 'meal_id', 14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'DISHES_MOVE',
+          type: DISHES_MOVE,
           meteor: {
             call: {
               method: 'moveDishToMeal',
@@ -103,7 +108,7 @@ describe('actions', () => {
         newMealDishFactory(dishCollection)('fake_id', dish)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'DISHES_INSERT',
+          type: DISHES_INSERT,
           meteor: {
             insert: {
               entity: {
@@ -126,7 +131,7 @@ describe('actions', () => {
         updateMealDishFactory(dishCollection)(dish)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'DISHES_UPDATE',
+          type: DISHES_UPDATE,
           meteor: {
             update: {
               id: 'fake_id',

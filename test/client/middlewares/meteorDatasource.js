@@ -1,6 +1,7 @@
 /* eslint no-unused-expressions: 0 */
 /* global Computation, Tracker, afterEach, beforeEach, describe, it, expect, sinon */
 import meteorDatasourceMiddleware from 'app/client/middlewares/meteorDatasource';
+import actionTypeBuilder from 'app/client/actions/actionTypeBuilder';
 
 describe('middlewares', () => {
   describe('meteorDatasource', () => {
@@ -84,7 +85,7 @@ describe('middlewares', () => {
       meteorDatasourceMiddleware(store)(next)(action);
 
       expect(store.dispatch).to.have.been.calledWith({
-        type: 'dummy_datasource_5_CHANGED',
+        type: actionTypeBuilder.changed('dummy_datasource_5'),
         data: 'foo',
       });
     });

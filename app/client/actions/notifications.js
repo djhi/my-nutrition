@@ -1,5 +1,7 @@
-export const NEW_NOTIFICATION = 'NEW_NOTIFICATION';
-export const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION';
+import actionTypeBuilder from './actionTypeBuilder';
+
+export const NEW_NOTIFICATION = actionTypeBuilder.type('NEW_NOTIFICATION');
+export const CLEAR_NOTIFICATION = actionTypeBuilder.type('CLEAR_NOTIFICATION');
 
 export function newNotification(level, message) {
   return {

@@ -1,6 +1,8 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, beforeEach, describe, it, expect, sinon */
 import {
+  INVITE_COACH,
+  INVITE_COACHEE,
   inviteCoach,
   inviteCoachee,
 }
@@ -20,7 +22,7 @@ describe('actions', () => {
         inviteCoach('foo')(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'INVITE_COACH',
+          type: INVITE_COACH,
           meteor: {
             call: {
               method: 'inviteCoach',
@@ -39,7 +41,7 @@ describe('actions', () => {
         inviteCoachee('foo')(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'INVITE_COACHEE',
+          type: INVITE_COACHEE,
           meteor: {
             call: {
               method: 'inviteCoachee',
