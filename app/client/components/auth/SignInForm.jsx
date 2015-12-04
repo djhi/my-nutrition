@@ -1,8 +1,32 @@
 import React, { PropTypes } from 'react';
 import { Form, ValidatedInput } from 'react-bootstrap-validation';
 import { Link } from 'react-router';
+import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
-const SignInForm = ({ loginWithPassword }) => (
+const messages = defineMessages({
+  required: {
+    id: 'common.required',
+    description: 'Error message shown when a required field is missing',
+    defaultMessage: 'Required',
+  },
+  isEmail: {
+    id: 'common.isEmail',
+    description: 'Error message shown when an email field is not valid',
+    defaultMessage: 'Email invalide',
+  },
+  emailPlaceholder: {
+    id: 'auth.signIn.passwordPlaceholder',
+    description: 'Placeholder for email input on the sign-in page',
+    defaultMessage: 'Enter your email',
+  },
+  passwordPlaceholder: {
+    id: 'auth.signIn.passwordPlaceholder',
+    description: 'Placeholder for password input on the sign-in page',
+    defaultMessage: 'Enter your password',
+  },
+});
+
+const SignInForm = ({ formatMessage, loginWithPassword }) => (
   <Form
     className="form-horizontal"
     onValidSubmit={({email, password}) => loginWithPassword(email, password)}
@@ -14,10 +38,11 @@ const SignInForm = ({ loginWithPassword }) => (
       name="email"
       validate="required,isEmail"
       errorHelp={{
-        required: 'Requis',
-        isEmail: 'Email invalide',
+        required: formatMessage.required(messages.required),
+        isEmail: formatMessage.isEmail(messages.isEmail),
       }}
     />
+
 
     <ValidatedInput
       type="password"
@@ -25,22 +50,40 @@ const SignInForm = ({ loginWithPassword }) => (
       name="password"
       validate="required"
       errorHelp={{
-        required: 'Requis',
+        required: formatMessage.required(messages.required),
       }}
     />
 
     <div className="btn-group">
-      <button className="btn btn-primary" type="submit">S'authentifier</button>
-      <Link className="btn btn-secondary" to="/">Annuler</Link>
+      <button className="btn btn-primary" type="submit">
+        <FormattedMessage
+          id="auth.signIn.signIn"
+          description="Button to sign-in with login/pwd"
+          defaultMessage="Sign in"
+        />
+      </button>
+      <Link className="btn btn-secondary" to="/">
+        <FormattedMessage
+          id="common.cancel"
+          defaultMessage="Cancel"
+        />
+      </Link>
     </div>
     <div className="btn-group">
-      <Link className="btn btn-link" to="/sign-up">Vous n'avez pas de compte ?</Link>
+      <Link className="btn btn-link" to="/sign-up">
+        <FormattedMessage
+          id="auth.signIn.signUp"
+          description="Button to go to sign-up"
+          defaultMessage="No account ?"
+        />
+      </Link>
     </div>
   </Form>
 );
 
 SignInForm.propTypes = {
+  intl: intlShape.isRequired,
   loginWithPassword: PropTypes.func.isRequired,
 };
 
-export default SignInForm;
+export default injectIntl(SignInForm);

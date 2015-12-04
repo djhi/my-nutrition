@@ -8,6 +8,7 @@ import createHistory from 'history/lib/createBrowserHistory';
 
 import configureStore from './client/store';
 import routes from './client/routes';
+import { switchLocale } from './client/actions/app';
 import { loadUser } from './client/actions/auth';
 
 // Tether is required by bootstrap components such as tooltips and popovers
@@ -26,10 +27,17 @@ const store = configureStore(history);
 // in the global state reactivly
 store.dispatch(loadUser());
 
+// Dispatch the switchLocale action immediatly if the user language isn't the default one
+const locale = navigator.language || navigator.browserLanguage;
+
+if (locale !== 'en') {
+  store.dispatch(switchLocale(locale));
+}
+
 // We must wait for Meteor to be ready before trying to render React otherwise,
 // our main template from ../meteor_core/meteor.html would not be available
 Meteor.startup(() => {
-  moment.locale('fr');
+  moment.locale(locale);
 
   render(
     <Provider store={store}>

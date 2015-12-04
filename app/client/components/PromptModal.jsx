@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import {Form, ValidatedInput} from 'react-bootstrap-validation';
+import { FormattedMessage } from 'react-intl';
 
 const NewMealTemplateModal = ({
     children,
@@ -47,16 +48,26 @@ NewMealTemplateModal.propTypes = {
   children: PropTypes.node.isRequired,
   defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
-  confirmButtonLabel: PropTypes.string,
-  cancelButtonLabel: PropTypes.string,
+  confirmButtonLabel: PropTypes.node,
+  cancelButtonLabel: PropTypes.node,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };
 
 NewMealTemplateModal.defaultProps = {
-  confirmButtonLabel: 'Ok',
-  cancelButtonLabel: 'Annuler',
+  confirmButtonLabel: (
+    <FormattedMessage
+      id="common.ok"
+      defaultMessage="Ok"
+    />
+  ),
+  cancelButtonLabel: (
+    <FormattedMessage
+      id="common.cancel"
+      defaultMessage="Cancel"
+    />
+  ),
 };
 
 export default NewMealTemplateModal;

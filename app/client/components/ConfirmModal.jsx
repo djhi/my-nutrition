@@ -1,9 +1,11 @@
 import React, {PropTypes} from 'react';
 import {Button, Modal} from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 
 const ConfirmDeletionModal = ({
       children,
       confirmButtonLabel,
+      cancelButtonLabel,
       onCancel,
       onConfirm,
       show,
@@ -18,7 +20,7 @@ const ConfirmDeletionModal = ({
       </Button>
 
       <Button onClick={onCancel}>
-        Annuler
+        {cancelButtonLabel}
       </Button>
     </Modal.Footer>
   </Modal>
@@ -26,16 +28,26 @@ const ConfirmDeletionModal = ({
 
 ConfirmDeletionModal.propTypes = {
   children: PropTypes.node.isRequired,
-  confirmButtonLabel: PropTypes.string,
-  cancelButtonLabel: PropTypes.string,
+  confirmButtonLabel: PropTypes.node,
+  cancelButtonLabel: PropTypes.node,
   show: PropTypes.bool.isRequired,
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
 
 ConfirmDeletionModal.defaultProps = {
-  confirmButtonLabel: 'Ok',
-  cancelButtonLabel: 'Annuler',
+  confirmButtonLabel: (
+    <FormattedMessage
+      id="common.ok"
+      defaultMessage="Ok"
+    />
+  ),
+  cancelButtonLabel: (
+    <FormattedMessage
+      id="common.cancel"
+      defaultMessage="Cancel"
+    />
+  ),
 };
 
 export default ConfirmDeletionModal;

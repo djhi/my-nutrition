@@ -1,8 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {Overlay, Popover} from 'react-bootstrap';
+import DatePicker from 'react-date-picker';
 import ReactDOM from 'react-dom';
 import Fa from 'react-fa';
-import DatePicker from 'react-date-picker';
+import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
 export default class PlanningSelector extends Component {
@@ -40,7 +41,12 @@ export default class PlanningSelector extends Component {
     return (
       <div className="btn-group">
         <button className="btn btn-secondary" onClick={onDateChange.bind(null, prevDate)}>
-          <Fa name="chevron-left" /> Précédent
+          <Fa name="chevron-left" />
+          <FormattedMessage
+            id="planning.previous"
+            description="Button to go to previous date"
+            defaultMessage="Previous"
+          />
         </button>
 
         <button ref="button" className="btn btn-secondary" onClick={this.showCalendar.bind(this)}>
@@ -56,15 +62,19 @@ export default class PlanningSelector extends Component {
             <DatePicker
               date={dateSelected}
               locale="fr"
-              todayText="Aujourd'hui"
-              gotoSelectedText="Date sélectionnée"
+              footerFactory={() => <span></span> /* This is the only way to hide the default footer of this datepicker */}
               onChange={this.onChange.bind(this)}
             />
           </Popover>
         </Overlay>
 
-        <button className="btn btn-secondary" onClick={onDateChange.bind(null, nextDate)}>
-          Suivant <Fa name="chevron-right" />
+        <button className="btn btn-secondary icon-right" onClick={onDateChange.bind(null, nextDate)}>
+          <FormattedMessage
+            id="planning.next"
+            description="Button to go to next date"
+            defaultMessage="Next"
+          />
+          <Fa name="chevron-right" />
         </button>
       </div>
     );

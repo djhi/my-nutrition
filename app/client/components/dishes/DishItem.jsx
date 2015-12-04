@@ -4,6 +4,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { flow } from 'lodash';
 import DishForm from './DishForm';
 import DishMenu from './DishMenu';
+import { FormattedMessage } from 'react-intl';
 
 const dishItemSource = {
   canDrag(props) {
@@ -134,7 +135,11 @@ class DishItem extends Component {
             className="card card-inverse card-primary dish dish-drop-target"
           >
             <div className="card-block">
-            Déplacer ici
+              <FormattedMessage
+                id="planning.dish.moveHere"
+                description="Displayed as a drag&drop target in a meal to move a dish"
+                defaultMessage="Move here"
+              />
             </div>
           </div>
         }
@@ -151,7 +156,6 @@ class DishItem extends Component {
     );
 
     return connectDragSource(connectDropTarget(element));
-    // return connectDragSource(element);
   }
 }
 

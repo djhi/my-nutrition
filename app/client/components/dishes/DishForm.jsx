@@ -1,11 +1,31 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Form, ValidatedInput } from 'react-bootstrap-validation';
+import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { assign } from 'lodash';
 
-export default class DishForm extends Component {
+const messages = defineMessages({
+  required: {
+    id: 'common.required',
+    description: 'Error message shown when a required field is missing',
+    defaultMessage: 'Required',
+  },
+  portionsPlaceholder: {
+    id: 'planning.dish.portionsPlaceholder',
+    description: 'Placeholder for dish portions count input',
+    defaultMessage: 'Portions',
+  },
+  labelPlaceholder: {
+    id: 'planning.dish.labelPlaceholder',
+    description: 'Placeholder for dish label input',
+    defaultMessage: 'Label',
+  },
+});
+
+class DishForm extends Component {
   static propTypes = {
     dish: PropTypes.object,
+    intl: intlShape.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
   }
@@ -38,9 +58,17 @@ export default class DishForm extends Component {
   }
 
   render() {
-    const { onCancel } = this.props;
+    const { formatMessage, onCancel } = this.props;
     const { dish, edition } = this.state;
-    const help = <span id="dishform">Enregistrer le plat: <b>CTRL + Entrer</b></span>;
+    const help = (
+      <span id="dishform">
+        <FormattedMessage
+          id="planning.dish.helpForSave"
+          description="Displayed below the textarea for dish's description"
+          defaultMessage="Save with: CTRL + Enter"
+        />
+      </span>
+    );
 
     return (
       <Form
@@ -52,27 +80,33 @@ export default class DishForm extends Component {
           <div className="col-xs-6">
             <ValidatedInput
               type="number"
-              placeholder="Portions"
+              placeholder={formatMessage(messages.portionsPlaceholder)}
               name="portions"
               validate="required"
               errorHelp={{
-                required: 'Requis',
+                required: formatMessage(message.required),
               }}
               onKeyDown={this.onKeyDown.bind(this)}
             />
           </div>
           <div className="col-xs-6">
-            <label className="control-label">portion(s)</label>
+            <label className="control-label">
+              <FormattedMessage
+                id="planning.dish.portions"
+                description="Label displayed after the dish's portions count (should handle optional plural form)"
+                defaultMessage="portion(s)"
+              />
+            </label>
           </div>
           <div className="col-xs-12">
             <ValidatedInput
               ref="label"
               type="text"
-              placeholder="Libellé"
+              placeholder={formatMessage(messages.labelPlaceholder)}
               name="label"
               validate="required"
               errorHelp={{
-                required: 'Requis',
+                required: formatMessage(messages.required),
               }}
               onKeyDown={this.onKeyDown.bind(this)}
             />
@@ -88,10 +122,22 @@ export default class DishForm extends Component {
           </div>
         </div>
         <div className="btn-group">
-          <button className="btn btn-primary" ref="submit" type="submit">{edition ? 'Enregistrer' : 'Ajouter'}</button>
-          <button className="btn btn-secondary" onClick={onCancel}>Annuler</button>
+          <button className="btn btn-primary" ref="submit" type="submit">
+            <FormattedMessage
+              id="common.save"
+              defaultMessage="Save"
+            />
+          </button>
+          <button className="btn btn-secondary" onClick={onCancel}>
+            <FormattedMessage
+              id="common.cancel"
+              defaultMessage="Cancel"
+            />
+          </button>
         </div>
       </Form>
     );
   }
 }
+
+export default injectIntl(DishForm);

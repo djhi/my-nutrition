@@ -7,6 +7,7 @@ import Meal from './meals/Meal';
 import NewMealButton from './meals/NewMealButton';
 import Notification from './Notification';
 import PlanningSelector from './PlanningSelector';
+import InviteCoachNotification from './InviteCoachNotification';
 
 class Planning extends Component {
   static propTypes = {
@@ -79,7 +80,7 @@ class Planning extends Component {
   }
 
   render() {
-    const { dateSelected, ready, meals, mealTemplates, planningUser, planningUserId, user } = this.props;
+    const { dateSelected, ready, meals, mealTemplates, planningUser, planningUserId, setUserPreference, user } = this.props;
     const dateSelectedAsDate = moment(dateSelected, 'YYYY-MM-DD').toDate();
     const formattedDate = moment(dateSelected).format('LL');
     const canEdit = planningUserId === (user && user._id);
@@ -96,24 +97,10 @@ class Planning extends Component {
               />
             </h2>
             {user && !user.coachId && Roles.userIsInRole(user._id, 'coachee') && (!user.profile.preferences || !user.profile.preferences.noCoach) &&
-              <Notification
-                level="info"
-                dismiss={false}
-              >
-                <h4>Vous êtes accompagné par un coach ?</h4>
-                <p>Invitez le à suivre votre planning nutrionnel !</p>
-                <p>
-                  <Link to="/invite-coach" className="btn btn-link">
-                    Inviter mon coach
-                  </Link>
-                  <button
-                    className="btn btn-link"
-                    onClick={this.props.setUserPreference.bind(null, user._id, 'noCoach', true)}
-                  >
-                    Plus tard
-                  </button>
-                </p>
-              </Notification>
+              <InviteCoachNotification
+                setUserPreference={setUserPreference}
+                userId={user._id}
+              />
             }
           </div>
           <div className="col-xs-12">
