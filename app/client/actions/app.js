@@ -14,7 +14,8 @@ export function setTitle(title) {
 
 export function switchLocale(locale) {
   return dispatch => {
-    const language = locale.substr(0, locale.indexOf('-'));
+    const indexOfHyphen = locale.indexOf('-');
+    const language = indexOfHyphen > -1 ? locale.substr(0, locale.indexOf('-')) : locale;
     let messages;
 
     if (language !== 'en') {
