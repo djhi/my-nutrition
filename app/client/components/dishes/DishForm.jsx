@@ -58,8 +58,9 @@ class DishForm extends Component {
   }
 
   render() {
-    const { formatMessage, onCancel } = this.props;
+    const { intl: { formatMessage }, onCancel } = this.props;
     const { dish, edition } = this.state;
+
     const help = (
       <span id="dishform">
         <FormattedMessage
@@ -84,7 +85,7 @@ class DishForm extends Component {
               name="portions"
               validate="required"
               errorHelp={{
-                required: formatMessage(message.required),
+                required: formatMessage(messages.required),
               }}
               onKeyDown={this.onKeyDown.bind(this)}
             />
