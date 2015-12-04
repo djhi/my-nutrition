@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
-const messages = {
+const messages = defineMessages({
     editTooltip: {
       id: 'planning.meal.clickToEdit',
       defaultMessage: 'Click to edit',
       description: 'Displayed as a tooltip on the meal time link',
     }
-};
+});
 
 class MealTime extends Component {
   static propTypes = {
