@@ -1,6 +1,10 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, beforeEach, describe, it, expect, sinon */
 import {
+  MEAL_TEMPLATES,
+  MEAL_TEMPLATES_REMOVE,
+  MEAL_TEMPLATES_NEW_FROM_MEAL,
+  MEALS_NEW_FROM_MEAL_TEMPLATE,
   loadMealTemplatesFactory,
   deleteMealTemplateFactory,
   newMealTemplate,
@@ -34,7 +38,7 @@ describe('actions', () => {
         loadMealTemplatesFactory(mealTemplateCollection)()(dispatch);
 
         expect(dispatch).to.have.been.calledWith(sinon.match
-          .has('type', 'MEAL_TEMPLATES').and(
+          .has('type', MEAL_TEMPLATES).and(
             sinon.match.has('meteor', sinon.match
               .has('subscribe', sinon.match.func)
               .and(sinon.match.has('get', sinon.match.func))
@@ -65,7 +69,7 @@ describe('actions', () => {
         deleteMealTemplateFactory(mealTemplateCollection)(14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'MEAL_TEMPLATES_REMOVE',
+          type: MEAL_TEMPLATES_REMOVE,
           meteor: {
             remove: {
               id: 14,
@@ -81,7 +85,7 @@ describe('actions', () => {
         newMealTemplate('fake_id', 'foo')(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'MEAL_TEMPLATES_NEW_FROM_MEAL',
+          type: MEAL_TEMPLATES_NEW_FROM_MEAL,
           meteor: {
             call: {
               method: 'createMealTemplate',
@@ -102,7 +106,7 @@ describe('actions', () => {
         newMealFromTemplate('fake_id', date)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'MEALS_NEW_FROM_MEAL_TEMPLATE',
+          type: MEALS_NEW_FROM_MEAL_TEMPLATE,
           meteor: {
             call: {
               method: 'createMealFromTemplate',

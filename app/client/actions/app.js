@@ -1,4 +1,6 @@
-export const SET_TITLE = 'SET_TITLE';
+import actionTypeBuilder from './actionTypeBuilder';
+
+export const SET_TITLE = actionTypeBuilder.type('SET_TITLE');
 
 export function setTitle(title) {
   return {

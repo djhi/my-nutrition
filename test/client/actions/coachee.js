@@ -1,6 +1,8 @@
 /* eslint no-unused-expressions: 0 */
 /* global Meteor, beforeEach, describe, it, expect, sinon */
 import {
+  COACHEE,
+  COACHEES,
   loadCoacheeFactory,
   loadCoacheesFactory,
 }
@@ -27,7 +29,7 @@ describe('actions', () => {
         loadCoacheesFactory(coacheeCollection)()(dispatch);
 
         expect(dispatch).to.have.been.calledWith(sinon.match
-          .has('type', 'COACHEES').and(
+          .has('type', COACHEES).and(
             sinon.match.has('meteor', sinon.match
               .has('subscribe', sinon.match.func)
               .and(sinon.match.has('get', sinon.match.func))
@@ -60,7 +62,7 @@ describe('actions', () => {
         loadCoacheeFactory(coacheeCollection)()(dispatch);
 
         expect(dispatch).to.have.been.calledWith(sinon.match
-          .has('type', 'COACHEE').and(
+          .has('type', COACHEE).and(
             sinon.match.has('meteor', sinon.match(sinon.match.has('get', sinon.match.func)))
           )
         );

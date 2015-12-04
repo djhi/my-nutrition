@@ -3,6 +3,10 @@
 import moment from 'moment';
 
 import {
+  MEALS,
+  MEALS_REMOVE,
+  MEALS_INSERT,
+  MEALS_UPDATE,
   loadMealsFactory,
   deleteMealFactory,
   newMealFactory,
@@ -39,7 +43,7 @@ describe('actions', () => {
         loadMealsFactory(mealCollection)()(dispatch);
 
         expect(dispatch).to.have.been.calledWith(sinon.match
-          .has('type', 'MEALS').and(
+          .has('type', MEALS).and(
             sinon.match.has('meteor', sinon.match
               .has('subscribe', sinon.match.func)
               .and(sinon.match.has('get', sinon.match.func))
@@ -72,7 +76,7 @@ describe('actions', () => {
         deleteMealFactory(mealCollection)(14)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'MEALS_REMOVE',
+          type: MEALS_REMOVE,
           meteor: {
             remove: {
               id: 14,
@@ -89,7 +93,7 @@ describe('actions', () => {
         newMealFactory(mealCollection)('foo', 'bar', date)(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'MEALS_INSERT',
+          type: MEALS_INSERT,
           meteor: {
             insert: {
               entity: {
@@ -109,7 +113,7 @@ describe('actions', () => {
           updateMealTimeFactory(mealCollection)('meal_id', date)(dispatch);
 
           expect(dispatch).to.have.been.calledWith({
-            type: 'MEALS_UPDATE',
+            type: MEALS_UPDATE,
             meteor: {
               update: {
                 id: 'meal_id',

@@ -1,4 +1,6 @@
 /* global Meteor, Tracker */
+import actionTypeBuilder from '../actions/actionTypeBuilder';
+
 const handles = [];
 const computations = [];
 
@@ -53,7 +55,7 @@ export default store => next => action => {
     const ready = handle.ready();
 
     store.dispatch({
-      type: `${action.type}_READY`,
+      type: actionTypeBuilder.ready(action.type),
       ready,
     });
 
@@ -63,7 +65,7 @@ export default store => next => action => {
       }
 
       store.dispatch({
-        type: `${action.type}_CHANGED`,
+        type: actionTypeBuilder.changed(action.type),
         data,
       });
     }

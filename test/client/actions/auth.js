@@ -1,6 +1,11 @@
 /* eslint no-unused-expressions: 0 */
 /* global Accounts, Meteor, beforeEach, describe, it, expect, sinon */
 import {
+  USER_LOGGING_IN,
+  USER_DATA,
+  SET_ACCOUNT_AS_COACH,
+  SET_ACCOUNT_AS_COACHEE,
+  INITIALIZE_ACCOUNT_FROM_INVITE,
   loadUser,
   logout,
   loginWithGoogle,
@@ -36,7 +41,7 @@ describe('actions', () => {
         loadUser()(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'USER_LOGGING_IN',
+          type: USER_LOGGING_IN,
           meteor: {
             get: sinon.match.func,
           },
@@ -53,7 +58,7 @@ describe('actions', () => {
 
         const call = dispatch.getCall(1);
         expect(call).to.have.been.calledWith({
-          type: 'USER_DATA',
+          type: USER_DATA,
           meteor: {
             subscribe: sinon.match.func,
             get: sinon.match.func,
@@ -186,7 +191,7 @@ describe('actions', () => {
         setAccountAsCoach()(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'SET_ACCOUNT_AS_COACH',
+          type: SET_ACCOUNT_AS_COACH,
           meteor: {
             call: {
               method: 'setAccountAsCoach',
@@ -202,7 +207,7 @@ describe('actions', () => {
         setAccountAsCoachee()(dispatch);
 
         expect(dispatch).to.have.been.calledWith({
-          type: 'SET_ACCOUNT_AS_COACHEE',
+          type: SET_ACCOUNT_AS_COACHEE,
           meteor: {
             call: {
               method: 'setAccountAsCoachee',

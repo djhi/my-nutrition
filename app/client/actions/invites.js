@@ -1,10 +1,14 @@
 import { newSuccessNotification } from './notifications';
 import { updatePath } from 'redux-simple-router';
+import actionTypeBuilder from './actionTypeBuilder';
+
+export const INVITE_COACH = actionTypeBuilder.type('INVITE_COACH');
+export const INVITE_COACHEE = actionTypeBuilder.type('INVITE_COACHEE');
 
 export function inviteCoach(email) {
   return dispatch => {
     dispatch({
-      type: 'INVITE_COACH',
+      type: INVITE_COACH,
       meteor: {
         call: {
           method: 'inviteCoach',
@@ -21,7 +25,7 @@ export function inviteCoach(email) {
 export function inviteCoachee(email) {
   return dispatch => {
     dispatch({
-      type: 'INVITE_COACHEE',
+      type: INVITE_COACHEE,
       meteor: {
         call: {
           method: 'inviteCoachee',

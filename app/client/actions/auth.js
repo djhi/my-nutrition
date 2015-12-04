@@ -1,9 +1,13 @@
 /* global Accounts, Meteor, Roles */
+import actionTypeBuilder from './actionTypeBuilder';
 import { newNotification } from './notifications';
 import { updatePath } from 'redux-simple-router';
 
-export const USER_LOGGING_IN = 'USER_LOGGING_IN';
-export const USER_DATA = 'USER_DATA';
+export const USER_LOGGING_IN = actionTypeBuilder.type('USER_LOGGING_IN');
+export const USER_DATA = actionTypeBuilder.type('USER_DATA');
+export const SET_ACCOUNT_AS_COACH = actionTypeBuilder.type('SET_ACCOUNT_AS_COACH');
+export const SET_ACCOUNT_AS_COACHEE = actionTypeBuilder.type('SET_ACCOUNT_AS_COACHEE');
+export const INITIALIZE_ACCOUNT_FROM_INVITE = actionTypeBuilder.type('INITIALIZE_ACCOUNT_FROM_INVITE');
 
 export function loadUser() {
   return dispatch => {
@@ -39,7 +43,7 @@ export function logout() {
 export function setAccountAsCoach() {
   return dispatch => {
     dispatch({
-      type: 'SET_ACCOUNT_AS_COACH',
+      type: SET_ACCOUNT_AS_COACH,
       meteor: {
         call: {
           method: 'setAccountAsCoach',
@@ -53,7 +57,7 @@ export function setAccountAsCoach() {
 export function setAccountAsCoachee() {
   return dispatch => {
     dispatch({
-      type: 'SET_ACCOUNT_AS_COACHEE',
+      type: SET_ACCOUNT_AS_COACHEE,
       meteor: {
         call: {
           method: 'setAccountAsCoachee',
@@ -67,7 +71,7 @@ export function setAccountAsCoachee() {
 export function initializeAccountFromInvite(token) {
   return dispatch => {
     dispatch({
-      type: 'INITIALIZE_ACCOUNT_FROM_INVITE',
+      type: INITIALIZE_ACCOUNT_FROM_INVITE,
       meteor: {
         call: {
           method: 'initializeAccountFromInvite',
