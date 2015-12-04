@@ -14,15 +14,19 @@ export function setTitle(title) {
 
 export function switchLocale(locale) {
   return dispatch => {
-    const language = locale.substr(locale.indexOf('-') + 1);
+    const language = locale.substr(0, locale.indexOf('-'));
+    let messages;
 
-    const messages = require(`app/i18n/${locale}`);
+    if (language !== 'en') {
+      messages = require(`app/i18n/${language}`);
+    }
+
     const reactLocaleData = require(`react-intl/lib/locale-data/${language}`);
     addLocaleData(reactLocaleData);
 
     // If we need the Intl polyfill, we also need the locale data for it
     if (!global.Intl) {
-      require(`intl/locale-data/jsonp/${locale}`);
+      require(`intl/locale-data/jsonp/${language}`);
     }
 
     return dispatch({

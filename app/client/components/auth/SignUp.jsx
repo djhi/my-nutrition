@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react';
 import Fa from 'react-fa';
 import SignUpForm from '../../components/auth/SignUpForm';
+import { FormattedMessage } from 'react-intl';
 
 const SignUp = ({
   loginWithGoogle,
@@ -11,7 +12,11 @@ const SignUp = ({
   <div className="row">
     <div className="col-xs-12 col-md-6 col-md-offset-3">
       <h2>
-        Créez votre compte Ma-Nutrition
+        <FormattedMessage
+          id="auth.signUp.title"
+          description="Title of the sign-up page"
+          defaultMessage="Create your account on My Nutrition"
+        />
       </h2>
     </div>
     <div className="col-xs-12 col-md-6 col-md-offset-3">
@@ -19,12 +24,16 @@ const SignUp = ({
         className="btn btn-primary btn-lg btn-block"
         onClick={loginWithGoogle.bind(null, token)}
       >
-        <Fa name="google" /> Avec votre compte Google
+        <Fa name="google" />
+        <FormattedMessage
+          id="auth.signUp.google"
+          description="Button to sign up with google account"
+          defaultMessage="With your google account"
+        />
       </button>
     </div>
     <div className="col-xs-12 col-md-6 col-md-offset-3">
       <hr />
-      <h4>Avec votre adresse email:</h4>
       <SignUpForm
         signUp={signUp}
         token={token}

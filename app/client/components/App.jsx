@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import AppHeader from '../components/AppHeader';
 import Notification from '../components/Notification';
 
-const App = ({ children, locale, loggingIn, logout, messages, notification, title, user }) => (
+const App = ({ children, clearNotification, locale, loggingIn, logout, messages, notification, title, user }) => (
   <IntlProvider locale={locale} messages={messages}>
     <div className="container-fluid full-height">
       <div className="row">
@@ -39,12 +39,8 @@ App.propTypes = {
   notification: PropTypes.object,
   loggingIn: PropTypes.bool,
   logout: PropTypes.func.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   user: PropTypes.object,
-};
-
-App.defaultProps = {
-  title: 'Ma nutrition',
 };
 
 export default App;

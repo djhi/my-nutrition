@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Fa from 'react-fa';
 import ConfirmModal from '../ConfirmModal';
 import PromptModal from '../PromptModal';
+import { FormattedMessage } from 'react-intl';
 
 export default class MealMenu extends Component {
   static propTypes = {
@@ -53,8 +54,19 @@ export default class MealMenu extends Component {
         <button type="button" className="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
         <div className="dropdown-menu dropdown-menu-right">
-          <button className="dropdown-item" onClick={this.onNewMealTemplate.bind(this)}>Enregistrer comme modèle</button>
-          <button className="dropdown-item text-danger" onClick={this.onDelete.bind(this)}>Supprimer</button>
+          <button className="dropdown-item" onClick={this.onNewMealTemplate.bind(this)}>
+            <FormattedMessage
+              id="planning.meal.saveAsTemplate"
+              description="Displayed in meal menu"
+              defaultMessage="Save as template"
+            />
+          </button>
+          <button className="dropdown-item text-danger" onClick={this.onDelete.bind(this)}>
+            <FormattedMessage
+              id="common.remove"
+              defaultMessage="Remove"
+            />
+          </button>
         </div>
         <PromptModal
           defaultValue={meal.name}
@@ -62,8 +74,20 @@ export default class MealMenu extends Component {
           onConfirm={this.onSaveNewMealTemplate.bind(this)}
           show={setTemplateName}
         >
-          Entrez le nom de ce nouveau modèle de repas
-          <p className="text-muted"><small>Si ce nom existe déjà, le modèle correspondant sera remplacé.</small></p>
+          <FormattedMessage
+            id="planning.meal.promptNewTemplateName"
+            description="Displayed in a modal when requesting to create a new template from a meal"
+            defaultMessage="Enter a name for this new meal template"
+          />
+          <p className="text-muted">
+            <small>
+              <FormattedMessage
+                id="planning.meal.promptNewTemplateNameInfo"
+                description="Displayed in a modal when requesting to create a new template from a meal as addtional information"
+                defaultMessage="If the name is already used, the matching template will be overriden"
+              />
+            </small>
+          </p>
         </PromptModal>
 
         <ConfirmModal
@@ -71,7 +95,11 @@ export default class MealMenu extends Component {
           onConfirm={this.onDeletionConfirmed.bind(this)}
           show={confirm}
         >
-            Voulez-vous vraiment supprimer ce repas ?
+          <FormattedMessage
+            id="planning.meal.removalConfirmationPrompt"
+            description="Displayed in a modal when requesting to remove a meal"
+            defaultMessage="Do you really want to remove this meal ?"
+          />
         </ConfirmModal>
       </div>
     );

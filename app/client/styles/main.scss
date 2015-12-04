@@ -50,3 +50,12 @@ html,
     background-color: lighten($brand-info, 10%);
   }
 }
+
+.btn .fa {
+  margin-right: .5em;
+}
+
+.btn.icon-right .fa {
+  margin-left: .5em;
+  margin-right: 0;
+}

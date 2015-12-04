@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Fa from 'react-fa';
 import ConfirmModal from '../ConfirmModal';
+import { FormattedMessage } from 'react-intl';
 
 export default class DishMenu extends Component {
   static propTypes = {
@@ -50,18 +51,33 @@ export default class DishMenu extends Component {
         <div className="dropdown-menu dropdown-menu-right">
           {filteredMeals.map(meal => (
             <button className="dropdown-item" key={`move_${meal._id}`} onClick={this.props.onMoveDishToMeal.bind(this, this.props.dish._id, meal._id, -1)}>
-              Déplacer dans {meal.name} ({meal.takenAt()})
+              <FormattedMessage
+                id="planning.dish.moveToMeal"
+                description="Displayed in dish menu. Specify meal time as we may have multiple meal with same name"
+                defaultMessage="Move in {mealName} ({mealTakenAt})"
+                values={{mealName: meal.name, mealTakenAt: meal.takenAt()}}
+              />
             </button>
           ))}
           <div className="dropdown-divider"></div>
           {filteredMeals.map(meal => (
             <button className="dropdown-item" key={`copy_${meal._id}`} onClick={this.props.onCopyDishToMeal.bind(this, this.props.dish._id, meal._id, -1)}>
-              Copier dans {meal.name} ({meal.takenAt()})
+              <FormattedMessage
+                id="planning.dish.copyToMeal"
+                description="Displayed in dish menu. Specify meal time as we may have multiple meal with same name"
+                defaultMessage="Copy in {mealName} ({mealTakenAt})"
+                values={{mealName: meal.name, mealTakenAt: meal.takenAt()}}
+              />
             </button>
           ))}
 
           <div className="dropdown-divider"></div>
-          <button className="dropdown-item text-danger" onClick={this.onDelete.bind(this)}>Supprimer</button>
+          <button className="dropdown-item text-danger" onClick={this.onDelete.bind(this)}>
+            <FormattedMessage
+              id="common.remove"
+              defaultMessage="Supprimer"
+            />
+          </button>
         </div>
 
         <ConfirmModal
@@ -69,7 +85,11 @@ export default class DishMenu extends Component {
           onCancel={this.onCancel.bind(this)}
           show={confirm}
         >
-            Voulez-vous vraiment supprimer ce plat ?
+          <FormattedMessage
+            id="planning.dish.removalConfirmationPrompt"
+            description="Displayed in a modal when requesting to remove a dish"
+            defaultMessage="Do you really want to remove this dish ?"
+          />
         </ConfirmModal>
       </div>
     );

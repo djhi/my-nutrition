@@ -1,7 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import { defineMessages, injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
-export default class MealTime extends Component {
+const messages = {
+    editTooltip: {
+      id: 'planning.meal.clickToEdit',
+      defaultMessage: 'Click to edit',
+      description: 'Displayed as a tooltip on the meal time link',
+    }
+};
+
+class MealTime extends Component {
   static propTypes = {
+    intl: intlShape.isRequired,
     time: PropTypes.string.isRequired,
     onTimeChange: PropTypes.func.isRequired,
   }
@@ -51,6 +61,7 @@ export default class MealTime extends Component {
 
   renderForm() {
     const { time } = this.state;
+    const { formatMessage } = this.props.intl;
 
     return (
       <form>
@@ -66,8 +77,18 @@ export default class MealTime extends Component {
         </fieldset>
 
         <div className="form-group btn-group btn-group-xs" role="group">
-          <button type="button" className="btn btn-primary" onClick={this.onTimeChange.bind(this)}>Enregistrer</button>
-          <button type="button" className="btn btn-secondary" onClick={this.onCancel.bind(this)}>Annuler</button>
+          <button type="button" className="btn btn-primary" onClick={this.onTimeChange.bind(this)}>
+            <FormattedMessage
+              id="common.save"
+              defaultMessage="Save"
+            />
+          </button>
+          <button type="button" className="btn btn-secondary" onClick={this.onCancel.bind(this)}>
+            <FormattedMessage
+              id="common.cancel"
+              defaultMessage="Cancel"
+            />
+          </button>
         </div>
       </form>
     );
@@ -77,15 +98,20 @@ export default class MealTime extends Component {
     const { time } = this.state;
 
     return (
-        <button
-          type="button"
-          className="btn btn-link"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Cliquer pour modifier"
-          onClick={this.onEdit.bind(this)}
-        >
-        Pris à {time}
+      <button
+        type="button"
+        className="btn btn-link"
+        data-toggle="tooltip"
+        data-placement="top"
+        title={formatMessage(messages.editTooltip)}
+        onClick={this.onEdit.bind(this)}
+      >
+        <FormattedMessage
+          id="planning.meal.takenAt"
+          description="Displayed at the top of a meal, as a link for quick edition"
+          defaultMessage="Taken at {time}"
+          value={{time}}
+        />
       </button>
     );
   }
@@ -96,3 +122,5 @@ export default class MealTime extends Component {
     return <div className="meal-time">{edition ? this.renderForm() : this.renderView()}</div>;
   }
 }
+
+export default injectIntl(MealTime);

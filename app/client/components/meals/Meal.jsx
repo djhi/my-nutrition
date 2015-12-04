@@ -1,4 +1,3 @@
-/* global Meteor */
 import React, { Component, PropTypes } from 'react';
 import MealTime from './MealTime';
 import MealMenu from './MealMenu';
@@ -7,6 +6,7 @@ import DishForm from '../dishes/DishForm';
 import DragNDropItems from '../../constants/dragndrop';
 import { DropTarget } from 'react-dnd';
 import { assign } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
 const mealTarget = {
   canDrop(props, monitor) {
@@ -107,7 +107,11 @@ class Meal extends Component {
           {canDrop && isOver &&
             <div className="card card-inverse card-primary dish dish-drop-target">
               <div className="card-block">
-              Déplacer ici
+                <FormattedMessage
+                  id="planning.meal.moveDishHere"
+                  description="Displayed as a drag&drop target in a meal to move a dish as the fisrt dish in this meal"
+                  defaultMessage="Move here"
+                />
               </div>
             </div>
           }
@@ -117,7 +121,11 @@ class Meal extends Component {
               className="btn btn-link text-muted"
               onClick={this.onAddNewDish.bind(this)}
             >
-              Ajouter un plat
+              <FormattedMessage
+                id="planning.meal.addADish"
+                description="Button to add a dish inside a meal"
+                defaultMessage="Add a dish"
+              />
             </button>
           }
 
