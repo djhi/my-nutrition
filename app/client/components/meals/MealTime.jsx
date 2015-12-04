@@ -96,6 +96,7 @@ class MealTime extends Component {
 
   renderView() {
     const { time } = this.state;
+    const { formatMessage } = this.props.intl;
 
     return (
       <button
@@ -110,7 +111,7 @@ class MealTime extends Component {
           id="planning.meal.takenAt"
           description="Displayed at the top of a meal, as a link for quick edition"
           defaultMessage="Taken at {time}"
-          value={{time}}
+          values={{time}}
         />
       </button>
     );
