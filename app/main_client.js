@@ -28,8 +28,7 @@ const store = configureStore(history);
 store.dispatch(loadUser());
 
 // Dispatch the switchLocale action immediatly if the user language isn't the default one
-// const locale = navigator.language || navigator.browserLanguage;
-const locale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.browserLanguage);
+const locale = navigator.language || navigator.browserLanguage;
 
 if (locale !== 'en') {
   store.dispatch(switchLocale(locale));
