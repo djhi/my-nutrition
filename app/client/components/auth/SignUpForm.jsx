@@ -19,13 +19,18 @@ const messages = defineMessages({
     description: 'Placeholder for email input on sign-up page',
     defaultMessage: 'Enter your email',
   },
+  namePlaceholder: {
+    id: 'auth.signUp.namePlaceholder',
+    description: 'Placeholder for name input on sign-up page',
+    defaultMessage: 'Enter your name',
+  },
   passwordPlaceholder: {
     id: 'auth.signUp.passwordPlaceholder',
     description: 'Placeholder for password input on sign-up page',
     defaultMessage: 'Enter a password',
   },
 });
-const SignUpForm = ({formatMessage, signUp}) => (
+const SignUpForm = ({intl: {formatMessage}, signUp}) => (
   <Form
     className="form-horizontal"
     onValidSubmit={({email, name, password}) => signUp(email, name, password)}

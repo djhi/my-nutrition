@@ -8,6 +8,7 @@ export default {
   'auth.signIn.title': 'Authentification',
   'auth.signIn.google': 'Avec votre compte Google',
   'auth.signIn.emailPlaceholder': 'Entrez votre email',
+  'auth.signIn.namePlaceholder': 'Entrez votre nom',
   'auth.signIn.passwordPlaceholder': 'Entrez votre mot de passe',
   'auth.signIn.confirmation.title': 'Content de vous revoir !',
   'auth.signIn.confirmation.goToDashboard': 'Aller sur mon tableau de bord',

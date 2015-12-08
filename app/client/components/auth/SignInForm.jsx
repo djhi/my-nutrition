@@ -26,7 +26,7 @@ const messages = defineMessages({
   },
 });
 
-const SignInForm = ({ formatMessage, loginWithPassword }) => (
+const SignInForm = ({ intl: {formatMessage}, loginWithPassword }) => (
   <Form
     className="form-horizontal"
     onValidSubmit={({email, password}) => loginWithPassword(email, password)}
@@ -38,8 +38,8 @@ const SignInForm = ({ formatMessage, loginWithPassword }) => (
       name="email"
       validate="required,isEmail"
       errorHelp={{
-        required: formatMessage.required(messages.required),
-        isEmail: formatMessage.isEmail(messages.isEmail),
+        required: formatMessage(messages.required),
+        isEmail: formatMessage(messages.isEmail),
       }}
     />
 
@@ -50,7 +50,7 @@ const SignInForm = ({ formatMessage, loginWithPassword }) => (
       name="password"
       validate="required"
       errorHelp={{
-        required: formatMessage.required(messages.required),
+        required: formatMessage(messages.required),
       }}
     />
 
