@@ -22,13 +22,17 @@ export function switchLocale(locale) {
       messages = require(`app/i18n/${language}`);
     }
 
-    const reactLocaleData = require(`react-intl/lib/locale-data/${language}`);
-    addLocaleData(reactLocaleData);
+ 
+if ('ReactIntlLocaleData' in window) {
+    Object.keys(ReactIntlLocaleData).forEach((lang) => {
+        addLocaleData(ReactIntlLocaleData[lang]);
+    });
+}
 
     // If we need the Intl polyfill, we also need the locale data for it
-    if (!global.Intl) {
-      require(`intl/locale-data/jsonp/${language}`);
-    }
+//    if (!global.Intl) {
+  //    require(`intl/locale-data/jsonp/${language}`);
+    //}
 
     return dispatch({
       type: SWITCH_LOCALE,
