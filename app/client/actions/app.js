@@ -1,5 +1,5 @@
 /* global ReactIntlLocaleData */
-import {addLocaleData} from 'react-intl';
+import { addLocaleData } from 'react-intl';
 import actionTypeBuilder from './actionTypeBuilder';
 
 export const SET_TITLE = actionTypeBuilder.type('SET_TITLE');
@@ -22,17 +22,16 @@ export function switchLocale(locale) {
       messages = require(`app/i18n/${language}`);
     }
 
- 
-if ('ReactIntlLocaleData' in window) {
-    Object.keys(ReactIntlLocaleData).forEach((lang) => {
+    if ('ReactIntlLocaleData' in window) {
+      Object.keys(ReactIntlLocaleData).forEach((lang) => {
         addLocaleData(ReactIntlLocaleData[lang]);
-    });
-}
+      });
+    }
 
     // If we need the Intl polyfill, we also need the locale data for it
-//    if (!global.Intl) {
-  //    require(`intl/locale-data/jsonp/${language}`);
-    //}
+    if (!global.Intl) {
+      require(`intl/locale-data/jsonp/${language}`);
+    }
 
     return dispatch({
       type: SWITCH_LOCALE,
